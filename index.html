@@ -1,83 +1,206 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name | Sociology</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      color: #222;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-      margin-bottom: 24px;
-    }
-    h1, h2 {
-      margin-top: 0;
-    }
-    .tag {
-      display: inline-block;
-      background: #eee;
-      padding: 6px 12px;
-      border-radius: 999px;
-      margin: 6px 8px 0 0;
-      font-size: 14px;
-    }
-    a {
-      color: #0b57d0;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="card">
-      <h1>Your Name</h1>
-      <p>MA student in Sociology based in Seoul. My research focuses on social theory, feminism, political subjectivity, resistance, and contemporary Chinese society.</p>
-      <p>
-        <span class="tag">Sociology</span>
-        <span class="tag">Research</span>
-        <span class="tag">Writing</span>
-        <span class="tag">Chinese / Korean / English</span>
-      </p>
-    </div>
+export default function PersonalHomepage() {
+  const researchInterests = [
+    "Political sociology",
+    "Social theory",
+    "Subjectivity and resistance",
+    "Feminism and gender politics",
+    "Contemporary Chinese society",
+    "Transnational civic discourse"
+  ];
 
-    <div class="card">
-      <h2>Research Interests</h2>
-      <p>Political sociology, social theory, feminism, resistance, subjectivity, contemporary Chinese society.</p>
-    </div>
+  const education = [
+    {
+      period: "2023–Present",
+      school: "Hanyang University",
+      degree: "M.A. in Sociology",
+      location: "Seoul, Korea"
+    },
+    {
+      period: "2020–2022",
+      school: "Chung‑Ang University",
+      degree: "B.A. in Sociology",
+      location: "Seoul, Korea"
+    },
+    {
+      period: "2018–2020",
+      school: "Myongji University",
+      degree: "B.A. in Digital Media",
+      location: "Korea"
+    }
+  ];
 
-    <div class="card">
-      <h2>Education</h2>
-      <p><strong>Hanyang University</strong> — M.A. in Sociology</p>
-      <p><strong>Chung-Ang University</strong> — B.A. in Sociology</p>
-    </div>
+  const experience = [
+    {
+      period: "2024–2025",
+      title: "Dormitory Assistant",
+      org: "Hanyang University"
+    },
+    {
+      period: "2024–2025",
+      title: "Global Supporters",
+      org: "Seongdong‑gu Office"
+    },
+    {
+      period: "2022–2023",
+      title: "Support Program for Migrant Women",
+      org: "Asia Language and Culture Institute"
+    },
+    {
+      period: "2022–Present",
+      title: "Assistant Editor",
+      org: "Zhitong Public Welfare Service Center"
+    },
+    {
+      period: "2022–Present",
+      title: "Writer / Academic Editor",
+      org: "Zhihe Society of Fudan University"
+    },
+    {
+      period: "2020–2022",
+      title: "Translator and Interpreter (KR‑CN‑EN)",
+      org: "Chung‑Ang University Human Rights Center"
+    }
+  ];
 
-    <div class="card">
-      <h2>Writing</h2>
-      <p><a href="https://matters.news/@PicaPica" target="_blank">Matters Blog</a></p>
-    </div>
+  const projects = [
+    {
+      title: "Subjectivity and the Politics of Resistance in Chinese Society",
+      desc: "Exploring forms of everyday resistance and political subjectivity in contemporary China."
+    },
+    {
+      title: "War and Sexual Violence Survey",
+      desc: "Research and documentation project examining gendered violence in wartime contexts."
+    },
+    {
+      title: "Animal Rights Reading Seminar",
+      desc: "Academic seminar series focused on ethics, animal rights, and political philosophy."
+    },
+    {
+      title: "Feminist Reading Group Organization",
+      desc: "Organizing and recruiting for public feminist reading and discussion groups."
+    }
+  ];
 
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Email: your@email.com</p>
-      <p>Location: Seoul, Korea</p>
+  const skills = [
+    "Qualitative research",
+    "Social theory analysis",
+    "SPSS / Excel",
+    "Academic writing",
+    "Research design",
+    "Chinese · Korean · English",
+    "Photoshop",
+    "Premiere Pro"
+  ];
+
+  const awards = [
+    "Hanyang International Scholarship (Graduate School A, 100%)",
+    "Magna Cum Laude – Chung‑Ang University",
+    "Multiple academic excellence scholarships"
+  ];
+
+  return (
+    <div className="min-h-screen bg-neutral-50 text-neutral-900">
+      <main className="mx-auto max-w-5xl px-6 py-10 md:px-8 md:py-16">
+
+        {/* HERO */}
+        <section className="rounded-3xl border border-neutral-200 bg-white p-10 shadow-sm">
+          <h1 className="text-5xl font-semibold tracking-tight">Wang Guanxin</h1>
+          <p className="mt-4 max-w-2xl text-lg leading-7 text-neutral-700">
+            MA student in Sociology based in Seoul. My research focuses on political subjectivity,
+            resistance, feminism, and contemporary Chinese society. I am interested in the
+            relationship between everyday life, political structures, and forms of civic
+            engagement.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            {researchInterests.map((item) => (
+              <span key={item} className="rounded-full bg-neutral-100 px-4 py-2 text-sm">
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-8 text-sm text-neutral-600">
+            <p>Email: ghwsocio@hanyang.ac.kr</p>
+            <p>Location: Seoul, Korea</p>
+            <p>
+              Writing: <a className="underline" href="https://matters.news/@PicaPica" target="_blank">Matters Blog</a>
+            </p>
+          </div>
+        </section>
+
+        {/* EDUCATION */}
+        <section className="mt-8 rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+          <h2 className="text-2xl font-semibold">Education</h2>
+          <div className="mt-6 space-y-5">
+            {education.map((item) => (
+              <div key={item.school} className="grid md:grid-cols-[140px_1fr] gap-1">
+                <div className="text-sm text-neutral-500">{item.period}</div>
+                <div>
+                  <p className="font-medium">{item.school}</p>
+                  <p>{item.degree}</p>
+                  <p className="text-sm text-neutral-500">{item.location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* EXPERIENCE */}
+        <section className="mt-8 rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+          <h2 className="text-2xl font-semibold">Professional and Civic Experience</h2>
+          <div className="mt-6 space-y-5">
+            {experience.map((item) => (
+              <div key={item.title} className="grid md:grid-cols-[140px_1fr] gap-1">
+                <div className="text-sm text-neutral-500">{item.period}</div>
+                <div>
+                  <p className="font-medium">{item.title}</p>
+                  <p className="text-neutral-700">{item.org}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROJECTS */}
+        <section className="mt-8 rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+          <h2 className="text-2xl font-semibold">Research and Projects</h2>
+          <div className="mt-6 space-y-4">
+            {projects.map((p) => (
+              <div key={p.title}>
+                <p className="font-medium">{p.title}</p>
+                <p className="text-neutral-600">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SKILLS */}
+        <section className="mt-8 grid md:grid-cols-2 gap-8">
+
+          <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+            <h2 className="text-2xl font-semibold">Skills</h2>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {skills.map((s) => (
+                <span key={s} className="border rounded-full px-4 py-2 text-sm">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+            <h2 className="text-2xl font-semibold">Awards</h2>
+            <ul className="mt-4 space-y-2">
+              {awards.map((a) => (
+                <li key={a}>{a}</li>
+              ))}
+            </ul>
+          </div>
+
+        </section>
+
+      </main>
     </div>
-  </div>
-</body>
-</html>
+  );
+}
