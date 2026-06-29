@@ -3,37 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personal academic homepage of Wang Guanxin, a sociology graduate student and public writer based in Seoul." />
-  <meta name="theme-color" content="#f8f6f2" />
+  <meta name="description" content="Compact academic homepage of Wang Guanxin, sociology graduate student and public writer based in Seoul." />
+  <meta name="theme-color" content="#f7f2fb" />
   <meta property="og:title" content="Wang Guanxin | Sociology & Public Writing" />
-  <meta property="og:description" content="Academic profile, research interests, writing projects, education, and selected experience." />
+  <meta property="og:description" content="A compact lavender academic homepage with research, writing, education, experience, skills, and contact." />
   <meta property="og:type" content="website" />
   <title>Wang Guanxin | Sociology & Public Writing</title>
   <style>
     :root {
-      --bg: #f8f6f2;
-      --bg-2: #eee9e1;
-      --ink: #111111;
-      --ink-2: #2e2e2e;
-      --muted: #74716c;
-      --muted-2: #9a948b;
-      --line: rgba(17, 17, 17, 0.10);
+      --bg: #f7f2fb;
+      --bg-2: #eee7f7;
+      --bg-3: #e5ddef;
+      --ink: #17131f;
+      --ink-soft: #302a3b;
+      --muted: #746c80;
+      --muted-2: #9a90aa;
+      --line: rgba(52, 42, 66, 0.12);
       --glass: rgba(255, 255, 255, 0.58);
-      --glass-strong: rgba(255, 255, 255, 0.78);
-      --accent: #8b4a3b;
-      --accent-2: #d5a78b;
-      --accent-3: #f0ded2;
-      --shadow: 0 30px 90px rgba(38, 32, 27, 0.13);
-      --shadow-soft: 0 18px 54px rgba(38, 32, 27, 0.08);
+      --glass-strong: rgba(255, 255, 255, 0.74);
+      --lavender: #a98ad8;
+      --lavender-2: #c5b0ee;
+      --lavender-3: #e6dcf7;
+      --violet: #6f55a3;
+      --deep: #20182f;
+      --shadow: 0 32px 90px rgba(75, 57, 104, 0.16);
+      --shadow-soft: 0 18px 54px rgba(75, 57, 104, 0.10);
       --radius-xl: 42px;
       --radius-lg: 30px;
       --radius-md: 22px;
       --max: 1180px;
       --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --mono: "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
       --progress: 0%;
-      --x: 50%;
-      --y: 20%;
     }
 
     * { box-sizing: border-box; }
@@ -44,12 +46,13 @@
       min-height: 100vh;
       color: var(--ink);
       font-family: var(--sans);
-      background:
-        radial-gradient(circle at var(--x) var(--y), rgba(213, 167, 139, 0.30), transparent 24rem),
-        radial-gradient(circle at 18% 4%, rgba(255,255,255,.95), transparent 28rem),
-        linear-gradient(180deg, #fbfaf7 0%, var(--bg) 48%, var(--bg-2) 100%);
       line-height: 1.5;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.018em;
+      background:
+        radial-gradient(circle at 14% 8%, rgba(197, 176, 238, 0.44), transparent 31rem),
+        radial-gradient(circle at 88% 12%, rgba(169, 138, 216, 0.28), transparent 28rem),
+        radial-gradient(circle at 42% 95%, rgba(255, 255, 255, 0.72), transparent 34rem),
+        linear-gradient(180deg, #fbf8ff 0%, var(--bg) 42%, var(--bg-2) 100%);
       overflow-x: hidden;
     }
 
@@ -58,63 +61,63 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: -2;
       background-image:
-        linear-gradient(rgba(255,255,255,.24) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.24) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.48), transparent 68%);
+        linear-gradient(rgba(255,255,255,.26) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.26) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.38), transparent 68%);
+      z-index: -2;
     }
 
     body::after {
       content: "";
       position: fixed;
-      width: 54rem;
-      height: 54rem;
-      right: -24rem;
-      top: 16rem;
+      width: 50rem;
+      height: 50rem;
+      right: -22rem;
+      top: 6rem;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,.70), rgba(255,255,255,0));
-      filter: blur(10px);
+      background: radial-gradient(circle, rgba(255,255,255,.66), rgba(255,255,255,0));
+      filter: blur(8px);
       pointer-events: none;
       z-index: -1;
     }
 
     a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-    a:focus-visible { outline: 3px solid rgba(139, 74, 59, .28); outline-offset: 4px; border-radius: 8px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid rgba(169, 138, 216, 0.42); outline-offset: 3px; }
 
     .progress {
       position: fixed;
       left: 0;
       top: 0;
-      height: 3px;
       width: var(--progress);
+      height: 3px;
       z-index: 100;
-      background: linear-gradient(90deg, var(--ink), var(--accent), var(--accent-2));
-      box-shadow: 0 0 22px rgba(139, 74, 59, .26);
+      background: linear-gradient(90deg, var(--violet), var(--lavender-2));
+      box-shadow: 0 0 24px rgba(169, 138, 216, .42);
     }
 
-    .shell { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
+    .shell { width: min(var(--max), calc(100% - 42px)); margin: 0 auto; }
 
     .topbar {
       position: sticky;
       top: 14px;
-      z-index: 30;
+      z-index: 20;
       margin-top: 14px;
     }
 
     .nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 18px;
       padding: 10px 12px 10px 18px;
-      border: 1px solid rgba(255,255,255,.68);
+      border: 1px solid rgba(255,255,255,.72);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(30px) saturate(180%);
-      -webkit-backdrop-filter: blur(30px) saturate(180%);
-      box-shadow: 0 14px 42px rgba(35, 29, 24, .10);
+      background: rgba(255, 255, 255, 0.54);
+      backdrop-filter: blur(28px) saturate(175%);
+      -webkit-backdrop-filter: blur(28px) saturate(175%);
+      box-shadow: 0 14px 44px rgba(75, 57, 104, 0.12);
     }
 
     .brand {
@@ -126,30 +129,30 @@
     }
 
     .brand-mark {
-      width: 32px;
-      height: 32px;
+      width: 31px;
+      height: 31px;
       display: grid;
       place-items: center;
       border-radius: 50%;
       color: white;
-      background: linear-gradient(145deg, #111, #68615a);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,.25), 0 10px 22px rgba(17,17,17,.18);
+      background: linear-gradient(145deg, #2b223b, #7b63ad);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.24), 0 8px 22px rgba(111,85,163,.22);
       font-size: 12px;
-      font-weight: 740;
-      letter-spacing: -.08em;
+      font-weight: 760;
+      letter-spacing: -0.045em;
     }
 
-    .brand strong { font-size: 14px; font-weight: 680; letter-spacing: -.02em; }
+    .brand strong { font-size: 14px; letter-spacing: -0.012em; }
 
     nav ul {
-      list-style: none;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: flex-end;
       gap: 4px;
+      list-style: none;
       padding: 0;
       margin: 0;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -161,20 +164,20 @@
       color: var(--muted);
       font-size: 13px;
       text-decoration: none;
-      transition: color .28s ease, background .28s ease, transform .28s ease;
+      transition: background .25s ease, color .25s ease, transform .25s ease;
     }
 
-    nav a:hover { color: var(--ink); background: rgba(255,255,255,.78); transform: translateY(-1px); }
+    nav a:hover { background: rgba(255,255,255,.70); color: var(--deep); transform: translateY(-1px); }
 
-    main { padding: 86px 0 80px; }
+    main { padding: 84px 0 70px; }
 
     .hero {
-      min-height: calc(100svh - 126px);
+      min-height: min(72vh, 760px);
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(330px, .88fr);
+      grid-template-columns: minmax(0, 1.05fr) minmax(310px, .95fr);
       align-items: center;
-      gap: clamp(30px, 6vw, 82px);
-      padding-bottom: 58px;
+      gap: clamp(28px, 6vw, 76px);
+      padding-bottom: 36px;
     }
 
     .kicker {
@@ -183,33 +186,33 @@
       gap: 10px;
       min-height: 38px;
       padding: 0 14px;
-      border: 1px solid rgba(139,74,59,.16);
+      border: 1px solid rgba(169,138,216,.24);
       border-radius: 999px;
-      color: var(--accent);
+      color: var(--violet);
       background: rgba(255,255,255,.58);
       box-shadow: var(--shadow-soft);
       font-size: 13px;
-      font-weight: 680;
-      letter-spacing: -.01em;
+      font-weight: 700;
     }
 
     .dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--accent-2);
-      box-shadow: 0 0 0 6px rgba(213, 167, 139, .18);
+      background: var(--lavender);
+      box-shadow: 0 0 0 6px rgba(169,138,216,.17);
     }
 
-    h1, h2, h3 { margin: 0; }
+    h1, h2, h3, p { margin-top: 0; }
 
     h1 {
+      margin-bottom: 0;
       margin-top: 26px;
-      max-width: 840px;
-      font-size: clamp(58px, 10.4vw, 136px);
+      max-width: 880px;
+      font-size: clamp(58px, 10.2vw, 132px);
       line-height: .86;
       letter-spacing: -.09em;
-      font-weight: 780;
+      font-weight: 790;
     }
 
     .name-line {
@@ -220,22 +223,22 @@
     }
 
     .lead {
-      margin-top: 30px;
+      margin: 30px 0 0;
       max-width: 760px;
-      color: var(--ink-2);
-      font-size: clamp(19px, 2.15vw, 29px);
+      color: var(--ink-soft);
+      font-size: clamp(19px, 2.08vw, 28px);
       line-height: 1.33;
-      letter-spacing: -.05em;
+      letter-spacing: -.052em;
     }
 
-    .lead span { color: var(--accent); }
+    .lead span { color: var(--violet); }
 
     .actions {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 38px;
+      margin-top: 36px;
     }
 
     .button {
@@ -245,58 +248,58 @@
       justify-content: center;
       gap: 8px;
       padding: 0 20px;
+      border: 1px solid rgba(45,37,58,.10);
       border-radius: 999px;
-      border: 1px solid rgba(17,17,17,.10);
       color: white;
-      background: #111;
+      background: linear-gradient(145deg, #21172f, #6f55a3);
       text-decoration: none;
       font-size: 14px;
-      font-weight: 680;
-      box-shadow: 0 18px 40px rgba(17,17,17,.17);
+      font-weight: 700;
+      box-shadow: 0 20px 48px rgba(72, 51, 112, .22);
       transition: transform .32s cubic-bezier(.2,.8,.2,1), box-shadow .32s cubic-bezier(.2,.8,.2,1), background .32s ease;
     }
 
-    .button:hover { transform: translateY(-2px); box-shadow: 0 24px 56px rgba(17,17,17,.21); }
-    .button.secondary { color: var(--ink); background: rgba(255,255,255,.64); backdrop-filter: blur(20px); box-shadow: none; }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 26px 62px rgba(72, 51, 112, .26); }
+    .button.secondary { color: var(--deep); background: rgba(255,255,255,.62); backdrop-filter: blur(20px); box-shadow: none; }
     .button.secondary:hover { background: rgba(255,255,255,.88); }
     .button.disabled { color: var(--muted); background: rgba(255,255,255,.42); box-shadow: none; cursor: default; }
 
     .hero-visual {
       position: relative;
-      min-height: 640px;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 46px;
+      min-height: 540px;
+      border: 1px solid rgba(255,255,255,.76);
+      border-radius: 48px;
       overflow: hidden;
       background:
-        linear-gradient(145deg, rgba(255,255,255,.84), rgba(255,255,255,.38)),
-        radial-gradient(circle at 28% 18%, rgba(213,167,139,.30), transparent 22rem),
-        radial-gradient(circle at 84% 72%, rgba(139,74,59,.20), transparent 25rem);
+        linear-gradient(145deg, rgba(255,255,255,.86), rgba(255,255,255,.36)),
+        radial-gradient(circle at 30% 20%, rgba(197,176,238,.44), transparent 22rem),
+        radial-gradient(circle at 84% 74%, rgba(169,138,216,.28), transparent 25rem);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(30px) saturate(160%);
-      -webkit-backdrop-filter: blur(30px) saturate(160%);
+      backdrop-filter: blur(30px) saturate(170%);
+      -webkit-backdrop-filter: blur(30px) saturate(170%);
     }
 
     .hero-visual::before {
       content: "";
       position: absolute;
       inset: 18px;
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,.70);
+      border-radius: 36px;
+      border: 1px solid rgba(255,255,255,.72);
       pointer-events: none;
     }
 
     .orb {
       position: absolute;
-      width: 294px;
-      height: 294px;
+      width: 286px;
+      height: 286px;
       left: 50%;
       top: 39%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       background:
-        radial-gradient(circle at 32% 24%, #fff 0 18%, rgba(255,255,255,.45) 34%, transparent 58%),
-        linear-gradient(145deg, rgba(255,255,255,.64), rgba(139,74,59,.16), rgba(213,167,139,.34));
-      box-shadow: inset 0 1px 1px rgba(255,255,255,.94), 0 34px 92px rgba(139,74,59,.19);
+        radial-gradient(circle at 32% 24%, #fff 0 18%, rgba(255,255,255,.46) 34%, transparent 58%),
+        linear-gradient(145deg, rgba(255,255,255,.68), rgba(169,138,216,.18), rgba(197,176,238,.40));
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.94), 0 36px 96px rgba(111,85,163,.20);
       animation: float 8s ease-in-out infinite;
     }
 
@@ -305,7 +308,7 @@
       inset: 0;
       display: grid;
       place-items: center;
-      color: rgba(17,17,17,.73);
+      color: rgba(32,24,47,.72);
       font-size: 86px;
       font-weight: 720;
       letter-spacing: -.13em;
@@ -322,138 +325,236 @@
       right: 28px;
       bottom: 28px;
       padding: 24px;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.74);
+      border-radius: 30px;
       background: rgba(255,255,255,.60);
-      backdrop-filter: blur(26px) saturate(175%);
-      -webkit-backdrop-filter: blur(26px) saturate(175%);
-      box-shadow: 0 20px 50px rgba(38,32,27,.10);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      box-shadow: 0 22px 56px rgba(61,48,80,.12);
     }
 
     .glass-note strong { display: block; margin-bottom: 8px; color: var(--ink); font-size: 18px; letter-spacing: -.04em; }
     .glass-note p { margin: 0; color: var(--muted); font-size: 14px; }
 
-    .stats {
+    .mini-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       margin-top: 20px;
     }
 
-    .stat {
+    .mini-stat {
       padding: 14px;
-      border-radius: 19px;
-      border: 1px solid rgba(255,255,255,.72);
-      background: rgba(255,255,255,.50);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.74);
+      background: rgba(255,255,255,.48);
     }
 
-    .stat b { display: block; color: var(--ink); font-size: 18px; letter-spacing: -.05em; }
-    .stat span { color: var(--muted); font-size: 12px; }
+    .mini-stat b { display: block; color: var(--ink); font-size: 18px; letter-spacing: -.05em; }
+    .mini-stat span { color: var(--muted); font-size: 12px; }
 
-    .section { padding: 72px 0; }
+    .compact-section {
+      padding: 44px 0 56px;
+    }
 
     .section-head {
       display: grid;
-      grid-template-columns: minmax(220px, .36fr) minmax(0, .64fr);
-      gap: 42px;
-      margin-bottom: 30px;
+      grid-template-columns: minmax(240px, .44fr) minmax(0, .56fr);
+      gap: 36px;
       align-items: end;
+      margin-bottom: 22px;
     }
 
     .label {
-      margin: 0 0 14px;
-      color: var(--accent);
+      margin: 0 0 12px;
+      color: var(--violet);
       font-family: var(--mono);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 760;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
 
     h2 {
-      max-width: 780px;
-      font-size: clamp(38px, 6vw, 76px);
-      line-height: .95;
+      margin-bottom: 0;
+      max-width: 770px;
+      font-size: clamp(38px, 5.6vw, 70px);
+      line-height: .96;
       letter-spacing: -.08em;
-      font-weight: 780;
+      font-weight: 790;
     }
 
     .section-head p {
       margin: 0;
       color: var(--muted);
-      font-size: clamp(17px, 1.7vw, 21px);
+      font-size: clamp(17px, 1.55vw, 20px);
       line-height: 1.45;
       letter-spacing: -.04em;
     }
 
-    .panel, .focus-card, .project-card, .timeline-item, .skill-card {
-      border: 1px solid rgba(255,255,255,.72);
-      background: rgba(255,255,255,.50);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(26px) saturate(150%);
-      -webkit-backdrop-filter: blur(26px) saturate(150%);
-    }
-
-    .panel { border-radius: var(--radius-xl); padding: clamp(30px, 5vw, 58px); }
-
-    .about-copy {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(22px, 4vw, 46px);
-      color: var(--ink-2);
-      font-size: clamp(18px, 1.8vw, 24px);
-      line-height: 1.42;
-      letter-spacing: -.05em;
-    }
-
-    .about-copy p { margin: 0; }
-
-    .focus-grid {
+    .card-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .focus-card, .project-card, .timeline-item, .skill-card {
+    .compact-card {
+      position: relative;
+      min-height: 270px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.74);
       border-radius: var(--radius-lg);
-      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), background .35s ease;
+      background:
+        linear-gradient(150deg, rgba(255,255,255,.66), rgba(255,255,255,.38)),
+        radial-gradient(circle at 14% 10%, rgba(197,176,238,.22), transparent 12rem);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(28px) saturate(165%);
+      -webkit-backdrop-filter: blur(28px) saturate(165%);
+      transition: transform .38s cubic-bezier(.2,.8,.2,1), box-shadow .38s cubic-bezier(.2,.8,.2,1), background .38s ease;
     }
 
-    .focus-card:hover, .project-card:hover, .timeline-item:hover, .skill-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 28px 70px rgba(38,32,27,.12);
+    .compact-card:hover,
+    .compact-card:focus-within,
+    .compact-card.open {
+      transform: translateY(-6px);
+      background:
+        linear-gradient(150deg, rgba(255,255,255,.76), rgba(255,255,255,.46)),
+        radial-gradient(circle at 20% 8%, rgba(197,176,238,.34), transparent 13rem);
+      box-shadow: 0 30px 84px rgba(75,57,104,.18);
     }
 
-    .focus-card {
-      min-height: 232px;
+    .card-main {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      min-height: 270px;
       padding: 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform .42s cubic-bezier(.2,.8,.2,1), opacity .36s ease;
     }
 
-    .index { color: rgba(139,74,59,.60); font-family: var(--mono); font-size: 12px; font-weight: 760; }
-    .focus-card h3, .project-card h3, .skill-card h3 { margin-bottom: 10px; font-size: 24px; line-height: 1.08; letter-spacing: -.06em; }
-    .focus-card p, .project-card p, .skill-card p { margin: 0; color: var(--muted); }
+    .compact-card:hover .card-main,
+    .compact-card:focus-within .card-main,
+    .compact-card.open .card-main {
+      transform: translateY(-18px);
+    }
 
-    .project-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 16px; }
-    .project-card { padding: 28px; min-height: 224px; }
-    .project-card.featured { min-height: 464px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(145deg, rgba(255,255,255,.74), rgba(255,255,255,.38)); }
-    .project-card.featured h3 { font-size: clamp(34px, 4vw, 54px); }
-    .project-stack { display: grid; gap: 16px; }
-    .chip { display: inline-flex; width: max-content; margin-bottom: 18px; padding: 7px 11px; border-radius: 999px; background: rgba(240,222,210,.78); color: var(--accent); font-family: var(--mono); font-size: 11px; font-weight: 760; letter-spacing: .05em; text-transform: uppercase; }
+    .card-index {
+      color: rgba(111,85,163,.62);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+    }
 
-    .timeline { display: grid; gap: 12px; }
-    .timeline-item { display: grid; grid-template-columns: 165px 1fr; gap: 24px; padding: 22px 24px; align-items: start; }
-    .year { color: var(--accent); font-weight: 760; letter-spacing: -.03em; }
-    .timeline-item h3 { margin-bottom: 5px; font-size: 23px; letter-spacing: -.06em; }
-    .timeline-item p { margin: 0; color: var(--muted); }
+    .card-main h3 {
+      margin: 0 0 10px;
+      color: var(--deep);
+      font-size: 28px;
+      line-height: 1.02;
+      letter-spacing: -.07em;
+      font-weight: 780;
+    }
 
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .skill-card { padding: 25px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 18px 0 0; }
-    .tags li { padding: 7px 10px; border: 1px solid rgba(139,74,59,.14); border-radius: 999px; background: rgba(255,255,255,.46); color: var(--accent); font-size: 12px; font-weight: 700; }
+    .card-main p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card-toggle {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      z-index: 5;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(111,85,163,.16);
+      border-radius: 50%;
+      color: var(--violet);
+      background: rgba(255,255,255,.58);
+      cursor: pointer;
+      font-size: 18px;
+      transition: transform .32s ease, background .32s ease;
+    }
+
+    .compact-card:hover .card-toggle,
+    .compact-card:focus-within .card-toggle,
+    .compact-card.open .card-toggle {
+      transform: rotate(45deg);
+      background: rgba(255,255,255,.86);
+    }
+
+    .drawer {
+      position: absolute;
+      z-index: 4;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      max-height: calc(100% - 24px);
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.78);
+      border-radius: 24px;
+      color: var(--deep);
+      background: rgba(250, 247, 255, .76);
+      box-shadow: 0 18px 52px rgba(75,57,104,.14);
+      backdrop-filter: blur(28px) saturate(185%);
+      -webkit-backdrop-filter: blur(28px) saturate(185%);
+      transform: translateY(calc(100% - 54px));
+      transition: transform .48s cubic-bezier(.18,.86,.22,1), background .32s ease;
+    }
+
+    .compact-card:hover .drawer,
+    .compact-card:focus-within .drawer,
+    .compact-card.open .drawer {
+      transform: translateY(0);
+    }
+
+    .drawer-head {
+      min-height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--violet);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .drawer ul {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.38;
+    }
+
+    .drawer li {
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .drawer li::before {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      left: 0;
+      top: .65em;
+      border-radius: 50%;
+      background: var(--lavender);
+    }
+
+    .contact-section { padding: 26px 0 0; }
 
     .contact-panel {
       display: grid;
@@ -461,16 +562,19 @@
       align-items: center;
       gap: 26px;
       padding: clamp(34px, 6vw, 68px);
-      border-radius: 44px;
+      border-radius: 46px;
       color: white;
-      background: linear-gradient(145deg, rgba(17,17,17,.94), rgba(58,51,46,.94));
-      box-shadow: 0 38px 96px rgba(17,17,17,.20);
+      background:
+        radial-gradient(circle at 15% 18%, rgba(197,176,238,.30), transparent 24rem),
+        linear-gradient(145deg, rgba(32,24,47,.96), rgba(86,67,128,.94));
+      box-shadow: 0 40px 100px rgba(32,24,47,.22);
     }
 
     .contact-panel h2 { color: white; }
-    .contact-panel p:not(.label) { margin: 20px 0 0; max-width: 680px; color: rgba(255,255,255,.72); font-size: 18px; }
+    .contact-panel p:not(.label) { margin: 20px 0 0; max-width: 690px; color: rgba(255,255,255,.72); font-size: 18px; }
+    .contact-panel .label { color: rgba(226,216,247,.88); }
     .contact-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; }
-    .contact-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(255,255,255,.12); color: white; text-decoration: none; transition: background .28s ease, transform .28s ease; }
+    .contact-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: rgba(255,255,255,.12); color: white; text-decoration: none; transition: background .28s ease, transform .28s ease; }
     .contact-links a:hover { background: rgba(255,255,255,.22); transform: translateY(-1px); }
 
     footer { padding: 34px 0 56px; color: var(--muted); }
@@ -478,7 +582,7 @@
 
     [data-reveal] {
       opacity: 0;
-      transform: translateY(24px) scale(.985);
+      transform: translateY(22px) scale(.986);
       transition: opacity .82s cubic-bezier(.2,.8,.2,1), transform .82s cubic-bezier(.2,.8,.2,1);
     }
 
@@ -488,13 +592,15 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition: none !important; }
       [data-reveal] { opacity: 1; transform: none; }
+      .orb { animation: none; }
+      .drawer { transform: none; }
     }
 
     @media (max-width: 980px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-visual { min-height: 520px; }
-      .section-head, .about-copy, .project-grid, .contact-panel { grid-template-columns: 1fr; }
-      .focus-grid, .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-visual { min-height: 500px; }
+      .section-head, .contact-panel { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-links { justify-content: flex-start; }
     }
 
@@ -505,19 +611,20 @@
       nav ul { justify-content: flex-start; }
       nav a { padding: 0 8px; }
       main { padding-top: 54px; }
-      .hero { padding-bottom: 24px; }
-      h1 { font-size: clamp(54px, 18vw, 82px); }
-      .hero-visual { min-height: 430px; border-radius: 32px; }
-      .hero-visual::before { inset: 12px; border-radius: 24px; }
-      .orb { width: 220px; height: 220px; }
-      .orb span { font-size: 66px; }
-      .glass-note { left: 16px; right: 16px; bottom: 16px; padding: 18px; border-radius: 22px; }
-      .stats { grid-template-columns: 1fr; }
-      .section { padding: 48px 0; }
-      .focus-grid, .skills-grid, .timeline-item { grid-template-columns: 1fr; }
-      .project-card.featured { min-height: 360px; }
-      .contact-panel { border-radius: 30px; }
+      .hero { padding-bottom: 18px; }
+      h1 { font-size: clamp(54px, 18vw, 84px); }
       .button { width: 100%; }
+      .hero-visual { min-height: 420px; border-radius: 34px; }
+      .hero-visual::before { inset: 12px; border-radius: 25px; }
+      .orb { width: 218px; height: 218px; }
+      .orb span { font-size: 66px; }
+      .glass-note { left: 16px; right: 16px; bottom: 16px; padding: 18px; border-radius: 24px; }
+      .mini-stats { grid-template-columns: 1fr; }
+      .compact-section { padding: 42px 0 44px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .compact-card { min-height: 250px; }
+      .card-main { min-height: 250px; padding: 24px; }
+      .contact-panel { border-radius: 32px; }
     }
   </style>
 </head>
@@ -532,10 +639,8 @@
       </a>
       <nav aria-label="Primary navigation">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#focus">Focus</a></li>
-          <li><a href="#writing">Writing</a></li>
-          <li><a href="#journey">Journey</a></li>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#cards">Cards</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -543,12 +648,12 @@
   </header>
 
   <main id="top" class="shell">
-    <section class="hero" aria-labelledby="hero-title">
+    <section id="profile" class="hero" aria-labelledby="hero-title">
       <div data-reveal>
         <div class="kicker"><span class="dot"></span>Sociology · Public writing · Seoul</div>
         <h1 id="hero-title">Wang Guanxin</h1>
         <div class="name-line">王官鑫 · 왕관흠</div>
-        <p class="lead">Sociology M.A. student at Hanyang University. I work at the intersection of <span>social theory</span>, public writing, translation, civic life, gender, migration, and contemporary East Asian societies.</p>
+        <p class="lead">Sociology M.A. student at Hanyang University. I work across <span>social theory</span>, public writing, translation, civic life, gender, migration, and contemporary East Asian societies.</p>
         <div class="actions" aria-label="Profile links">
           <a class="button" href="mailto:ghwsocio@hanyang.ac.kr">Email</a>
           <a class="button secondary" href="https://matters.news/@PicaPica" target="_blank" rel="noopener noreferrer">Matters Blog</a>
@@ -560,99 +665,139 @@
       <aside class="hero-visual" data-reveal aria-label="Profile summary">
         <div class="orb"><span>王</span></div>
         <div class="glass-note">
-          <strong>Research profile</strong>
-          <p>A compact public homepage for academic collaboration, essays, research projects, and future publication records.</p>
-          <div class="stats" aria-label="Profile facts">
-            <div class="stat"><b>M.A.</b><span>Sociology</span></div>
-            <div class="stat"><b>4</b><span>Languages</span></div>
-            <div class="stat"><b>Seoul</b><span>Korea</span></div>
+          <strong>Compact profile</strong>
+          <p>Designed as a short academic homepage: hover over the cards below to slide out the CV details.</p>
+          <div class="mini-stats" aria-label="Profile facts">
+            <div class="mini-stat"><b>M.A.</b><span>Sociology</span></div>
+            <div class="mini-stat"><b>4</b><span>Languages</span></div>
+            <div class="mini-stat"><b>Seoul</b><span>Korea</span></div>
           </div>
         </div>
       </aside>
     </section>
 
-    <section id="about" class="section" data-reveal>
+    <section id="cards" class="compact-section" aria-labelledby="cards-title" data-reveal>
       <div class="section-head">
-        <div><p class="label">About</p><h2>Research, writing, and social observation.</h2></div>
-        <p>A cleaner academic identity page, designed for quick scanning while preserving a serious research tone.</p>
-      </div>
-      <div class="panel">
-        <div class="about-copy">
-          <p>I work across sociology, public writing, translation, and academic community projects. My interests include subject formation, civic discourse, social theory, gender, migration, and the public circulation of knowledge.</p>
-          <p>My profile is shaped by cross-regional education and training in Korea, China, the United States, and the United Kingdom, together with editorial, translation, and civic experience.</p>
+        <div>
+          <p class="label">Compact map</p>
+          <h2 id="cards-title">Short by default. Detailed on hover.</h2>
         </div>
+        <p>The page stays brief: six lavender glass cards hold the core profile. Move the cursor over a card, focus it by keyboard, or tap it on mobile to reveal more.</p>
       </div>
-    </section>
 
-    <section id="focus" class="section" data-reveal>
-      <div class="section-head">
-        <div><p class="label">Focus</p><h2>Working areas.</h2></div>
-        <p>These are intentionally concise. The homepage should not reproduce the full CV; it should make the research identity legible.</p>
-      </div>
-      <div class="focus-grid">
-        <article class="focus-card"><span class="index">01</span><div><h3>Social theory</h3><p>Subject formation, agency, everyday interpretation, and collective life.</p></div></article>
-        <article class="focus-card"><span class="index">02</span><div><h3>Public sociology</h3><p>Accessible social analysis, interviews, essays, and civic-facing knowledge.</p></div></article>
-        <article class="focus-card"><span class="index">03</span><div><h3>Gender & migration</h3><p>Care, mobility, translation, and institutional encounters.</p></div></article>
-        <article class="focus-card"><span class="index">04</span><div><h3>East Asian societies</h3><p>Comparative questions across contemporary social and political life.</p></div></article>
-        <article class="focus-card"><span class="index">05</span><div><h3>Translation</h3><p>Language as mediation across Korean, Chinese, and English academic contexts.</p></div></article>
-        <article class="focus-card"><span class="index">06</span><div><h3>Methods</h3><p>Data processing, interviewing, close reading, editing, and qualitative interpretation.</p></div></article>
-      </div>
-    </section>
-
-    <section id="writing" class="section" data-reveal>
-      <div class="section-head">
-        <div><p class="label">Writing</p><h2>Projects with public texture.</h2></div>
-        <p>Selected writing and project areas, kept expandable for future abstracts, essays, and downloadable CV material.</p>
-      </div>
-      <div class="project-grid">
-        <article class="project-card featured">
-          <div>
-            <span class="chip">Public writing</span>
-            <h3>Essays, notes, and interviews on social life.</h3>
+      <div class="card-grid">
+        <article class="compact-card" tabindex="0">
+          <button class="card-toggle" type="button" aria-expanded="false" aria-label="Open research details">+</button>
+          <div class="card-main">
+            <span class="card-index">01</span>
+            <div><h3>Research</h3><p>Social theory, subject formation, civic discourse, gender, migration, and East Asian social life.</p></div>
           </div>
-          <p>Matters Blog collects sociology-related writing and public notes. Future updates can add selected essays, abstracts, and PDF links without changing the visual system.</p>
+          <div class="drawer">
+            <div class="drawer-head"><span>Research details</span><span>Slide</span></div>
+            <ul>
+              <li>Subjectivity, agency, and resistance politics.</li>
+              <li>Feminist thought and public discourse in contemporary China.</li>
+              <li>Migration, gender, translation, and civic participation.</li>
+              <li>Public sociology and accessible social analysis.</li>
+            </ul>
+          </div>
         </article>
-        <div class="project-stack">
-          <article class="project-card"><span class="chip">Series</span><h3>Dialogue with Chinese Workers</h3><p>A long-form writing project on work, future, nation, and collective life.</p></article>
-          <article class="project-card"><span class="chip">Academic work</span><h3>Reading groups and editorial projects</h3><p>Symposium participation, academic editing, student organizing, and research-oriented collaboration.</p></article>
-        </div>
+
+        <article class="compact-card" tabindex="0">
+          <button class="card-toggle" type="button" aria-expanded="false" aria-label="Open writing details">+</button>
+          <div class="card-main">
+            <span class="card-index">02</span>
+            <div><h3>Writing</h3><p>Public essays, blog writing, interview series, student projects, and editorial work.</p></div>
+          </div>
+          <div class="drawer">
+            <div class="drawer-head"><span>Writing details</span><span>Slide</span></div>
+            <ul>
+              <li>Matters Blog: sociology-related essays and public notes.</li>
+              <li>Dialogue with Chinese Workers: work, future, nation, and collective life.</li>
+              <li>Bachelor dissertation on subjectivity and resistance politics in China.</li>
+              <li>Feminist reading club recruitment and academic symposium participation.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="compact-card" tabindex="0">
+          <button class="card-toggle" type="button" aria-expanded="false" aria-label="Open education details">+</button>
+          <div class="card-main">
+            <span class="card-index">03</span>
+            <div><h3>Education</h3><p>Hanyang University sociology M.A.; prior training in sociology, media, and data analysis.</p></div>
+          </div>
+          <div class="drawer">
+            <div class="drawer-head"><span>Education details</span><span>Slide</span></div>
+            <ul>
+              <li>2023–Present: Hanyang University, M.A. in Sociology.</li>
+              <li>2020–2022: Chung-Ang University, B.A. in Sociology.</li>
+              <li>2018–2020: Myongji University, Digital Media studies.</li>
+              <li>2021: UW–Madison and York St John University exchange training.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="compact-card" tabindex="0">
+          <button class="card-toggle" type="button" aria-expanded="false" aria-label="Open experience details">+</button>
+          <div class="card-main">
+            <span class="card-index">04</span>
+            <div><h3>Experience</h3><p>Civic work, translation, academic communities, NGO editing, and campus roles.</p></div>
+          </div>
+          <div class="drawer">
+            <div class="drawer-head"><span>Experience details</span><span>Slide</span></div>
+            <ul>
+              <li>Seongdong-gu Office Global Supporters; Hanyang Residence Hall assistant.</li>
+              <li>Support work for migrant women; civic volunteering in Seoul.</li>
+              <li>Zhitong Public Welfare Service Center; Shero Initiative; Zhihe Society.</li>
+              <li>Korean-Chinese-English translation and interpretation at Chung-Ang University.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="compact-card" tabindex="0">
+          <button class="card-toggle" type="button" aria-expanded="false" aria-label="Open skills details">+</button>
+          <div class="card-main">
+            <span class="card-index">05</span>
+            <div><h3>Skills</h3><p>Data processing, academic editing, SNS management, translation, and media tools.</p></div>
+          </div>
+          <div class="drawer">
+            <div class="drawer-head"><span>Skills details</span><span>Slide</span></div>
+            <ul>
+              <li>SPSS, Excel, Word, PowerPoint, information search, and academic resources.</li>
+              <li>Academic editing, blog writing, research communication, and collaboration.</li>
+              <li>Adobe Premiere Pro, Photoshop, Canva, and visual/media editing.</li>
+              <li>Chinese, Korean TOPIK 5, English IELTS 6.0, and Japanese reading/listening.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="compact-card" tabindex="0">
+          <button class="card-toggle" type="button" aria-expanded="false" aria-label="Open awards details">+</button>
+          <div class="card-main">
+            <span class="card-index">06</span>
+            <div><h3>Awards</h3><p>Scholarships and academic honors from graduate and undergraduate study.</p></div>
+          </div>
+          <div class="drawer">
+            <div class="drawer-head"><span>Awards details</span><span>Slide</span></div>
+            <ul>
+              <li>2023–2025: Hanyang International Scholarship, Graduate School A.</li>
+              <li>2022: Magna Cum Laude, Chung-Ang University.</li>
+              <li>2019–2022: Academic Excellence Scholarships across Chung-Ang and Myongji.</li>
+              <li>Full CV available on request; public page omits phone and street address.</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="journey" class="section" data-reveal>
-      <div class="section-head">
-        <div><p class="label">Journey</p><h2>Education and selected experience.</h2></div>
-        <p>A lighter timeline for scanning. The full CV can be added later as a privacy-reviewed PDF.</p>
-      </div>
-      <div class="timeline">
-        <article class="timeline-item"><div class="year">2023–Present</div><div><h3>Hanyang University</h3><p>M.A. in Sociology · Seoul, Korea</p></div></article>
-        <article class="timeline-item"><div class="year">2020–2022</div><div><h3>Chung-Ang University</h3><p>B.A. in Sociology · Magna Cum Laude</p></div></article>
-        <article class="timeline-item"><div class="year">2018–2020</div><div><h3>Myongji University</h3><p>Digital Media studies · Korea</p></div></article>
-        <article class="timeline-item"><div class="year">2021</div><div><h3>International academic training</h3><p>Advanced data analysis, education, and cultural communication.</p></div></article>
-        <article class="timeline-item"><div class="year">2020–Present</div><div><h3>Editing, translation, and civic projects</h3><p>Academic editing, public-interest writing, student support, and multilingual communication.</p></div></article>
-      </div>
-    </section>
-
-    <section class="section" data-reveal>
-      <div class="section-head">
-        <div><p class="label">Capabilities</p><h2>Tools and languages.</h2></div>
-        <p>Research work, media production, multilingual communication, and academic collaboration.</p>
-      </div>
-      <div class="skills-grid">
-        <article class="skill-card"><h3>Research</h3><p>Data processing, document preparation, academic editing, and qualitative interpretation.</p><ul class="tags"><li>SPSS</li><li>Excel</li><li>Editing</li><li>Research communication</li></ul></article>
-        <article class="skill-card"><h3>Languages</h3><p>Chinese, Korean, English, and Japanese, with academic and public-facing communication experience.</p><ul class="tags"><li>Chinese</li><li>Korean</li><li>English</li><li>Japanese</li></ul></article>
-        <article class="skill-card"><h3>Media</h3><p>SNS management, image editing, video editing, and visual presentation for projects.</p><ul class="tags"><li>Premiere Pro</li><li>Photoshop</li><li>Canva</li><li>SNS</li></ul></article>
-      </div>
-    </section>
-
-    <section id="contact" class="section" data-reveal>
+    <section id="contact" class="contact-section" data-reveal>
       <div class="contact-panel">
         <div>
           <p class="label">Contact</p>
-          <h2>Open to academic collaboration and public writing exchange.</h2>
-          <p>Based in Seoul, Korea. Phone number and detailed address are intentionally omitted from the public homepage.</p>
+          <h2>For research, writing, or collaboration.</h2>
+          <p>Wang Guanxin · 王官鑫 · 왕관흠. Sociology M.A. student based in Seoul, Korea.</p>
         </div>
-        <div class="contact-links">
+        <div class="contact-links" aria-label="Contact links">
           <a href="mailto:ghwsocio@hanyang.ac.kr">Email</a>
           <a href="https://matters.news/@PicaPica" target="_blank" rel="noopener noreferrer">Matters</a>
           <a href="https://github.com/picapica2025" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -663,42 +808,55 @@
 
   <footer class="shell">
     <div class="footer-line">
-      <span>Wang Guanxin · 王官鑫 · 왕관흠</span>
-      <span>Sociology · Public writing · Seoul</span>
+      <span>© Wang Guanxin</span>
+      <span>Compact lavender academic homepage · no phone or street address displayed</span>
     </div>
   </footer>
 
   <script>
     const root = document.documentElement;
-
+    const progress = document.querySelector('.progress');
     const updateProgress = () => {
-      const max = document.body.scrollHeight - window.innerHeight;
-      const progress = max > 0 ? (window.scrollY / max) * 100 : 0;
-      root.style.setProperty('--progress', progress + '%');
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const value = max > 0 ? (scrollTop / max) * 100 : 0;
+      root.style.setProperty('--progress', value + '%');
     };
-
-    const updatePointer = (event) => {
-      const x = (event.clientX / window.innerWidth) * 100;
-      const y = (event.clientY / window.innerHeight) * 100;
-      root.style.setProperty('--x', x + '%');
-      root.style.setProperty('--y', y + '%');
-    };
-
     updateProgress();
     window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener('pointermove', updatePointer, { passive: true });
 
-    const revealItems = document.querySelectorAll('[data-reveal]');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.14 });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
 
-    revealItems.forEach((item) => observer.observe(item));
+    const cards = Array.from(document.querySelectorAll('.compact-card'));
+    cards.forEach((card) => {
+      const button = card.querySelector('.card-toggle');
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const willOpen = !card.classList.contains('open');
+        cards.forEach((other) => {
+          other.classList.remove('open');
+          const otherButton = other.querySelector('.card-toggle');
+          if (otherButton) otherButton.setAttribute('aria-expanded', 'false');
+        });
+        card.classList.toggle('open', willOpen);
+        button.setAttribute('aria-expanded', String(willOpen));
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.compact-card')) {
+        cards.forEach((card) => {
+          card.classList.remove('open');
+          const button = card.querySelector('.card-toggle');
+          if (button) button.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
   </script>
 </body>
 </html>
