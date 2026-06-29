@@ -4,36 +4,633 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Personal academic homepage of Wang Guanxin, sociology graduate student and public writer based in Seoul." />
-  <title>Wang Guanxin | Academic Homepage</title>
+  <meta name="theme-color" content="#f7f4ef" />
+  <meta property="og:title" content="Wang Guanxin | Sociology & Public Writing" />
+  <meta property="og:description" content="Academic profile, research interests, writing projects, and selected experience." />
+  <meta property="og:type" content="website" />
+  <title>Wang Guanxin | Sociology & Public Writing</title>
   <style>
-    :root{--bg:#f6f1ea;--paper:#fffaf3;--ink:#1b1715;--muted:#6d645c;--line:#dfd2c4;--accent:#8b342c;--soft:#ead8cf;--radius:22px;--shadow:0 20px 60px rgba(55,42,31,.10);--serif:Georgia,'Times New Roman',serif;--sans:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#fbf6ef 0%,var(--bg) 55%,#efe6dc 100%);color:var(--ink);font-family:var(--sans);line-height:1.65}a{color:inherit;text-underline-offset:4px}.shell{width:min(1120px,calc(100% - 40px));margin:0 auto}header{position:sticky;top:0;z-index:10;background:rgba(246,241,234,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{min-height:72px;display:flex;justify-content:space-between;align-items:center;gap:18px}.brand{text-decoration:none;display:grid;gap:2px}.brand strong{font-family:var(--serif);font-size:20px}.brand span{color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}nav ul{display:flex;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end}nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:999px;font-size:14px}nav a:hover{background:var(--soft);color:var(--accent)}main{padding:52px 0 82px}.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:26px}.card{background:rgba(255,250,243,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-main{padding:clamp(32px,6vw,64px)}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.15em;font-size:12px;font-weight:800;margin:0 0 22px}h1,h2,h3{font-family:var(--serif);line-height:1.1}h1{font-size:clamp(48px,9vw,88px);letter-spacing:-.06em;margin:0}.names{margin:14px 0 26px;color:var(--muted);font-size:clamp(18px,2.4vw,24px);font-family:var(--serif)}.lead{font-size:clamp(18px,2vw,23px);max-width:790px;margin:0}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border:1px solid var(--accent);border-radius:999px;text-decoration:none;font-weight:800;background:var(--accent);color:#fff}.button.secondary{background:transparent;color:var(--accent)}.side{padding:28px}.facts{display:grid;gap:16px;margin:0}.facts div{padding-bottom:16px;border-bottom:1px solid var(--line)}.facts dt{color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;margin-bottom:3px}.facts dd{margin:0;font-family:var(--serif);font-size:18px;line-height:1.35}section.panel{padding:clamp(24px,4vw,42px);margin-top:22px}.section-head{display:grid;grid-template-columns:minmax(180px,.34fr) minmax(0,.66fr);gap:28px;align-items:start;margin-bottom:26px}.section-head h2{margin:0;font-size:clamp(28px,4vw,44px);letter-spacing:-.035em}.section-head p,.muted{margin:0;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.item{background:rgba(255,255,255,.58);border:1px solid var(--line);border-radius:18px;padding:20px}.item h3{margin:0 0 8px;font-size:21px}.item p{margin:0;color:var(--muted)}.timeline{display:grid;gap:14px}.entry{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:20px;background:rgba(255,255,255,.58);border:1px solid var(--line);border-radius:18px}.year{color:var(--accent);font-weight:800}.entry h3{margin:0 0 4px;font-size:20px}.entry p{margin:0;color:var(--muted)}footer{padding:44px 0 60px;color:var(--muted)}.footer-inner{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:14px;flex-wrap:wrap}@media(max-width:900px){.hero,.section-head{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:680px){.shell{width:min(100% - 28px,1120px)}.nav{align-items:flex-start;flex-direction:column;padding:16px 0}nav ul{justify-content:flex-start}.grid,.entry{grid-template-columns:1fr}}
+    :root {
+      --bg: #f7f4ef;
+      --bg-2: #ece7df;
+      --ink: #171717;
+      --ink-soft: #343434;
+      --muted: #74706a;
+      --hairline: rgba(20, 20, 20, 0.10);
+      --glass: rgba(255, 255, 255, 0.62);
+      --glass-strong: rgba(255, 255, 255, 0.82);
+      --accent: #8a4b3e;
+      --accent-2: #c98d73;
+      --accent-3: #ebe0d7;
+      --shadow: 0 24px 70px rgba(43, 35, 28, 0.12);
+      --shadow-soft: 0 14px 44px rgba(43, 35, 28, 0.08);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --max: 1180px;
+      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --progress: 0%;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+      letter-spacing: -0.015em;
+      background:
+        radial-gradient(circle at 12% 4%, rgba(201, 141, 115, 0.30), transparent 28rem),
+        radial-gradient(circle at 86% 10%, rgba(138, 75, 62, 0.14), transparent 24rem),
+        linear-gradient(180deg, #fbfaf7 0%, var(--bg) 44%, var(--bg-2) 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.22) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.42), transparent 70%);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 46rem;
+      height: 46rem;
+      right: -18rem;
+      top: 10rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.52), rgba(255,255,255,0));
+      filter: blur(6px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid rgba(138, 75, 62, 0.32); outline-offset: 3px; }
+
+    .progress {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 3px;
+      width: var(--progress);
+      z-index: 100;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 20px rgba(138, 75, 62, .28);
+    }
+
+    .shell { width: min(var(--max), calc(100% - 42px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 14px;
+      z-index: 20;
+      margin-top: 14px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 12px 10px 18px;
+      border: 1px solid rgba(255,255,255,.62);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.58);
+      backdrop-filter: blur(26px) saturate(170%);
+      -webkit-backdrop-filter: blur(26px) saturate(170%);
+      box-shadow: 0 12px 38px rgba(42, 34, 27, 0.10);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #1f1f1f, #59524b);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .brand strong { font-size: 14px; letter-spacing: -0.01em; }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: background .25s ease, color .25s ease, transform .25s ease;
+    }
+
+    nav a:hover { background: rgba(255,255,255,.70); color: var(--ink); transform: translateY(-1px); }
+
+    main { padding: 88px 0 70px; }
+
+    .hero {
+      min-height: calc(100vh - 128px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+      align-items: center;
+      gap: clamp(28px, 6vw, 74px);
+      padding-bottom: 54px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 36px;
+      padding: 0 14px;
+      border: 1px solid rgba(138,75,62,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.56);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 650;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 6px rgba(201,141,115,.16);
+    }
+
+    h1 {
+      margin: 24px 0 0;
+      font-size: clamp(58px, 10.4vw, 132px);
+      line-height: .88;
+      letter-spacing: -0.085em;
+      font-weight: 760;
+      max-width: 820px;
+    }
+
+    .name-line {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(20px, 2.3vw, 30px);
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 30px 0 0;
+      max-width: 760px;
+      color: var(--ink-soft);
+      font-size: clamp(19px, 2.15vw, 28px);
+      line-height: 1.35;
+      letter-spacing: -0.045em;
+    }
+
+    .lead em { color: var(--accent); font-style: normal; }
+
+    .actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(23,23,23,.12);
+      background: #171717;
+      color: white;
+      text-decoration: none;
+      font-weight: 650;
+      font-size: 14px;
+      box-shadow: 0 16px 34px rgba(23,23,23,.16);
+      transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); box-shadow: 0 22px 48px rgba(23,23,23,.20); }
+    .button.secondary { background: rgba(255,255,255,.64); color: var(--ink); backdrop-filter: blur(18px); box-shadow: none; }
+    .button.secondary:hover { background: rgba(255,255,255,.86); }
+
+    .portrait-card {
+      position: relative;
+      min-height: 610px;
+      border-radius: 42px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.70);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,255,255,.35)),
+        radial-gradient(circle at 30% 14%, rgba(201,141,115,.30), transparent 23rem),
+        radial-gradient(circle at 82% 70%, rgba(138,75,62,.18), transparent 24rem);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(26px) saturate(150%);
+      -webkit-backdrop-filter: blur(26px) saturate(150%);
+    }
+
+    .portrait-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,.66);
+      border-radius: 32px;
+      pointer-events: none;
+    }
+
+    .profile-orb {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 26%, #ffffff, rgba(255,255,255,.16) 34%),
+        linear-gradient(145deg, rgba(138,75,62,.16), rgba(201,141,115,.34));
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.9), 0 34px 80px rgba(138,75,62,.18);
+    }
+
+    .profile-orb span {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(23,23,23,.76);
+      font-size: 84px;
+      font-weight: 680;
+      letter-spacing: -0.1em;
+    }
+
+    .glass-note {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      padding: 22px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.68);
+      background: rgba(255,255,255,.58);
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      box-shadow: 0 18px 44px rgba(42,34,27,.10);
+    }
+
+    .glass-note p { margin: 0; color: var(--muted); font-size: 14px; }
+    .glass-note strong { display: block; margin-bottom: 6px; color: var(--ink); font-size: 17px; letter-spacing: -0.03em; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.48);
+      border: 1px solid rgba(255,255,255,.70);
+    }
+
+    .stat b { display: block; font-size: 18px; letter-spacing: -0.05em; }
+    .stat span { color: var(--muted); font-size: 12px; }
+
+    .section { padding: 68px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(220px, .36fr) minmax(0, .64fr);
+      gap: 42px;
+      margin-bottom: 28px;
+      align-items: end;
+    }
+
+    .section-kicker { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 12px; }
+    h2 { margin: 0; font-size: clamp(38px, 6vw, 74px); line-height: .96; letter-spacing: -0.07em; font-weight: 760; }
+    .section-head p { margin: 0; color: var(--muted); font-size: clamp(17px, 1.7vw, 21px); line-height: 1.45; letter-spacing: -0.035em; }
+
+    .panel {
+      border: 1px solid rgba(255,255,255,.68);
+      background: rgba(255,255,255,.46);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+    }
+
+    .about-panel { padding: clamp(28px, 5vw, 56px); }
+    .about-copy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(22px, 4vw, 44px);
+      color: var(--ink-soft);
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.43;
+      letter-spacing: -0.045em;
+    }
+    .about-copy p { margin: 0; }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .focus-card, .project-card, .timeline-item, .skill-card {
+      border: 1px solid rgba(255,255,255,.72);
+      background: rgba(255,255,255,.52);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 14px 38px rgba(42,34,27,.06);
+      transition: transform .32s ease, box-shadow .32s ease, background .32s ease;
+    }
+
+    .focus-card:hover, .project-card:hover, .timeline-item:hover, .skill-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 24px 58px rgba(42,34,27,.10);
+    }
+
+    .focus-card { min-height: 230px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .index { color: rgba(138,75,62,.58); font-size: 13px; font-weight: 760; }
+    .focus-card h3, .project-card h3, .skill-card h3 { margin: 0 0 10px; font-size: 24px; line-height: 1.08; letter-spacing: -0.055em; }
+    .focus-card p, .project-card p, .skill-card p { margin: 0; color: var(--muted); }
+
+    .project-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 16px; }
+    .project-card { padding: 28px; min-height: 220px; }
+    .project-card.featured { min-height: 456px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(255,255,255,.38)); }
+    .project-label { display: inline-flex; width: max-content; padding: 7px 11px; border-radius: 999px; background: rgba(235,224,215,.72); color: var(--accent); font-size: 12px; font-weight: 760; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 18px; }
+    .project-card.featured h3 { font-size: clamp(32px, 4vw, 52px); }
+    .project-stack { display: grid; gap: 16px; }
+
+    .timeline { display: grid; gap: 12px; }
+    .timeline-item { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 22px 24px; align-items: start; }
+    .year { color: var(--accent); font-weight: 760; letter-spacing: -0.02em; }
+    .timeline-item h3 { margin: 0 0 4px; font-size: 22px; letter-spacing: -0.05em; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-card { padding: 24px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 18px 0 0; list-style: none; }
+    .tags li { padding: 7px 10px; border-radius: 999px; border: 1px solid rgba(138,75,62,.14); background: rgba(255,255,255,.44); color: var(--accent); font-size: 12px; font-weight: 680; }
+
+    .contact-panel {
+      padding: clamp(30px, 6vw, 64px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      background: linear-gradient(145deg, rgba(23,23,23,.92), rgba(57,48,42,.92));
+      color: white;
+      border-radius: 40px;
+      box-shadow: 0 34px 80px rgba(23,23,23,.18);
+    }
+    .contact-panel h2 { color: white; font-size: clamp(42px, 6vw, 78px); }
+    .contact-panel p { margin: 18px 0 0; max-width: 680px; color: rgba(255,255,255,.72); font-size: 18px; }
+    .contact-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .contact-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: rgba(255,255,255,.12); color: white; text-decoration: none; border: 1px solid rgba(255,255,255,.14); }
+    .contact-links a:hover { background: rgba(255,255,255,.20); }
+
+    footer { padding: 34px 0 54px; color: var(--muted); }
+    .footer-line { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(20,20,20,.10); padding-top: 18px; font-size: 14px; }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px) scale(.985);
+      transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+    [data-reveal].visible { opacity: 1; transform: translateY(0) scale(1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .portrait-card { min-height: 500px; }
+      .section-head, .about-copy, .project-grid, .contact-panel { grid-template-columns: 1fr; }
+      .focus-grid, .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 700px) {
+      .shell { width: min(100% - 28px, var(--max)); }
+      .topbar { top: 8px; margin-top: 8px; }
+      .nav { border-radius: 24px; align-items: flex-start; flex-direction: column; padding: 14px; }
+      nav ul { justify-content: flex-start; }
+      nav a { padding: 0 8px; }
+      main { padding-top: 54px; }
+      .hero { padding-bottom: 24px; }
+      .portrait-card { min-height: 420px; border-radius: 30px; }
+      .profile-orb { width: 220px; height: 220px; }
+      .profile-orb span { font-size: 66px; }
+      .glass-note { left: 16px; right: 16px; bottom: 16px; padding: 18px; border-radius: 22px; }
+      .stats { grid-template-columns: 1fr; }
+      .section { padding: 48px 0; }
+      .focus-grid, .skills-grid, .timeline-item { grid-template-columns: 1fr; }
+      .project-card.featured { min-height: 320px; }
+      .contact-panel { border-radius: 30px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="shell nav">
-      <a class="brand" href="#top"><strong>Wang Guanxin</strong><span>Academic homepage</span></a>
-      <nav aria-label="Primary navigation"><ul><li><a href="#about">About</a></li><li><a href="#research">Research</a></li><li><a href="#writing">Writing</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="topbar shell">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Wang Guanxin homepage">
+        <span class="brand-mark">WG</span>
+        <strong>Wang Guanxin</strong>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#focus">Focus</a></li>
+          <li><a href="#writing">Writing</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
+
   <main id="top" class="shell">
-    <div class="hero">
-      <section class="card hero-main">
-        <p class="eyebrow">Sociology · Research · Public writing</p>
-        <h1>Wang Guanxin</h1>
-        <div class="names">王官鑫 · 왕관흠</div>
-        <p class="lead">Sociology M.A. student at Hanyang University, based in Seoul. This homepage presents research interests, writing projects, education, selected experience, and contact information for academic collaboration.</p>
-        <div class="actions"><a class="button" href="mailto:ghwsocio@hanyang.ac.kr">Email</a><a class="button secondary" href="https://matters.news/@PicaPica" target="_blank" rel="noopener noreferrer">Matters Blog</a><a class="button secondary" href="https://github.com/picapica2025" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-      </section>
-      <aside class="card side"><dl class="facts"><div><dt>Current</dt><dd>M.A. in Sociology</dd></div><div><dt>Institution</dt><dd>Hanyang University</dd></div><div><dt>Location</dt><dd>Seoul, Korea</dd></div><div><dt>Languages</dt><dd>Chinese · Korean · English · Japanese</dd></div></dl></aside>
-    </div>
-    <section id="about" class="card panel"><div class="section-head"><h2>About</h2><p>A public-facing academic profile for research, writing, and collaboration.</p></div><p>I work across sociology, public writing, translation, and academic community projects. My interests include social theory, subject formation, civic life, contemporary East Asian societies, and the relationship between knowledge production and public discourse.</p></section>
-    <section id="research" class="card panel"><div class="section-head"><h2>Research</h2><p>Working areas to be expanded into publication records and project pages.</p></div><div class="grid"><article class="item"><h3>Social theory</h3><p>Subject formation, agency, and collective life.</p></article><article class="item"><h3>Public sociology</h3><p>Writing and accessible social analysis beyond the classroom.</p></article><article class="item"><h3>East Asian societies</h3><p>Cross-regional questions in contemporary social life.</p></article><article class="item"><h3>Translation</h3><p>Language, mediation, and academic communication.</p></article><article class="item"><h3>Civic life</h3><p>Community work, public discourse, and social participation.</p></article><article class="item"><h3>Methods</h3><p>Data analysis, editing, interviewing, and qualitative interpretation.</p></article></div></section>
-    <section id="writing" class="card panel"><div class="section-head"><h2>Writing</h2><p>Selected writing and project areas.</p></div><div class="grid"><article class="item"><h3>Blog</h3><p>Sociology-related essays and public notes.</p></article><article class="item"><h3>Interview series</h3><p>Long-form writing project on work, future, and social life.</p></article><article class="item"><h3>Academic projects</h3><p>Reading groups, symposium work, editorial support, and research assistance.</p></article></div></section>
-    <section id="education" class="card panel"><div class="section-head"><h2>Education</h2><p>Formal education and selected training.</p></div><div class="timeline"><article class="entry"><div class="year">2023–Present</div><div><h3>Hanyang University</h3><p>M.A. in Sociology</p></div></article><article class="entry"><div class="year">2020–2022</div><div><h3>Chung-Ang University</h3><p>B.A. in Sociology</p></div></article><article class="entry"><div class="year">2018–2020</div><div><h3>Myongji University</h3><p>Digital Media studies</p></div></article><article class="entry"><div class="year">2021</div><div><h3>International exchange training</h3><p>Data analysis, education, and cultural communication.</p></div></article></div></section>
-    <section class="card panel"><div class="section-head"><h2>Skills</h2><p>Research, editing, communication, and media skills.</p></div><div class="grid"><article class="item"><h3>Research tools</h3><p>SPSS, Excel, data processing, document preparation.</p></article><article class="item"><h3>Languages</h3><p>Chinese, Korean, English, and Japanese.</p></article><article class="item"><h3>Media</h3><p>Editing, SNS management, visual and video tools.</p></article></div></section>
+    <section class="hero" aria-labelledby="hero-title">
+      <div data-reveal>
+        <div class="kicker"><span class="dot"></span>Sociology · Public writing · Seoul</div>
+        <h1 id="hero-title">Wang<br>Guanxin</h1>
+        <div class="name-line">王官鑫 · 왕관흠</div>
+        <p class="lead">A sociology M.A. student at Hanyang University working across <em>social theory</em>, public writing, translation, and East Asian civic life.</p>
+        <div class="actions" aria-label="Primary links">
+          <a class="button" href="mailto:ghwsocio@hanyang.ac.kr">Email</a>
+          <a class="button secondary" href="https://matters.news/@PicaPica" target="_blank" rel="noopener noreferrer">Read writing</a>
+          <a class="button secondary" href="https://github.com/picapica2025" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="portrait-card" data-reveal aria-label="Profile summary">
+        <div class="profile-orb"><span>王</span></div>
+        <div class="glass-note">
+          <strong>Research profile</strong>
+          <p>Subject formation, civic discourse, gender studies, migration, public sociology, and contemporary East Asian societies.</p>
+          <div class="stats" aria-label="Profile facts">
+            <div class="stat"><b>M.A.</b><span>Sociology</span></div>
+            <div class="stat"><b>4</b><span>Languages</span></div>
+            <div class="stat"><b>Seoul</b><span>Based in Korea</span></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about" class="section" data-reveal>
+      <div class="section-head">
+        <div><p class="section-kicker">About</p><h2>Research, writing, and social observation.</h2></div>
+        <p>A compact academic homepage for collaboration, applications, public writing, and future research records.</p>
+      </div>
+      <div class="panel about-panel">
+        <div class="about-copy">
+          <p>I work across sociology, public writing, translation, and academic community projects. My interests include social theory, subject formation, civic life, gender, migration, and the public circulation of knowledge.</p>
+          <p>My profile is shaped by cross-regional training in Korea, China, the United States, and the United Kingdom, together with editorial, translation, and civic experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus" class="section" data-reveal>
+      <div class="section-head">
+        <div><p class="section-kicker">Focus</p><h2>Working areas.</h2></div>
+        <p>These are not fixed labels. They mark the questions that organize my reading, writing, and field-facing work.</p>
+      </div>
+      <div class="focus-grid">
+        <article class="focus-card"><span class="index">01</span><div><h3>Social theory</h3><p>Subject formation, agency, everyday interpretation, and collective life.</p></div></article>
+        <article class="focus-card"><span class="index">02</span><div><h3>Public sociology</h3><p>Accessible social analysis, interviews, essays, and civic-facing knowledge.</p></div></article>
+        <article class="focus-card"><span class="index">03</span><div><h3>Gender studies</h3><p>Gendered publics, care, migration, and institutional encounters.</p></div></article>
+        <article class="focus-card"><span class="index">04</span><div><h3>East Asian societies</h3><p>Comparative questions across contemporary social and political life.</p></div></article>
+        <article class="focus-card"><span class="index">05</span><div><h3>Translation</h3><p>Language as mediation: academic communication across Korean, Chinese, and English.</p></div></article>
+        <article class="focus-card"><span class="index">06</span><div><h3>Methods</h3><p>Data processing, interviewing, close reading, editing, and qualitative interpretation.</p></div></article>
+      </div>
+    </section>
+
+    <section id="writing" class="section" data-reveal>
+      <div class="section-head">
+        <div><p class="section-kicker">Writing</p><h2>Projects with public texture.</h2></div>
+        <p>Selected writing and project areas, kept concise for a modern homepage and expandable later into project pages.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card featured">
+          <div>
+            <span class="project-label">Public writing</span>
+            <h3>Essays, notes, and interviews on social life.</h3>
+          </div>
+          <p>Matters Blog collects sociology-related writing and public notes. Future updates can add selected essays, abstracts, and PDF links without changing the visual system.</p>
+        </article>
+        <div class="project-stack">
+          <article class="project-card"><span class="project-label">Series</span><h3>Dialogue with Chinese Workers</h3><p>A long-form writing project on work, future, nation, and collective life.</p></article>
+          <article class="project-card"><span class="project-label">Academic work</span><h3>Reading groups and editorial projects</h3><p>Symposium participation, academic editing, student organizing, and research-oriented collaboration.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="section" data-reveal>
+      <div class="section-head">
+        <div><p class="section-kicker">Journey</p><h2>Education and selected experience.</h2></div>
+        <p>A lighter timeline, designed for scanning rather than reproducing a full CV.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item"><div class="year">2023–Present</div><div><h3>Hanyang University</h3><p>M.A. in Sociology · Seoul, Korea</p></div></article>
+        <article class="timeline-item"><div class="year">2020–2022</div><div><h3>Chung-Ang University</h3><p>B.A. in Sociology · Magna Cum Laude</p></div></article>
+        <article class="timeline-item"><div class="year">2018–2020</div><div><h3>Myongji University</h3><p>Digital Media studies · Korea</p></div></article>
+        <article class="timeline-item"><div class="year">2021</div><div><h3>International academic training</h3><p>Advanced data analysis, education, and cultural communication.</p></div></article>
+        <article class="timeline-item"><div class="year">2020–Present</div><div><h3>Editing, translation, and civic projects</h3><p>Academic editing, public-interest writing, student support, and multilingual communication.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" data-reveal>
+      <div class="section-head">
+        <div><p class="section-kicker">Capabilities</p><h2>Tools and languages.</h2></div>
+        <p>Research work, media production, multilingual communication, and academic collaboration.</p>
+      </div>
+      <div class="skills-grid">
+        <article class="skill-card"><h3>Research</h3><p>Data processing, document preparation, academic editing, and qualitative interpretation.</p><ul class="tags"><li>SPSS</li><li>Excel</li><li>Editing</li><li>Research communication</li></ul></article>
+        <article class="skill-card"><h3>Languages</h3><p>Chinese, Korean, English, and Japanese, with academic and public-facing communication experience.</p><ul class="tags"><li>Chinese</li><li>Korean</li><li>English</li><li>Japanese</li></ul></article>
+        <article class="skill-card"><h3>Media</h3><p>SNS management, image editing, video editing, and visual presentation for projects.</p><ul class="tags"><li>Premiere Pro</li><li>Photoshop</li><li>Canva</li><li>SNS</li></ul></article>
+      </div>
+    </section>
+
+    <section id="contact" class="section" data-reveal>
+      <div class="contact-panel">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2>Open to academic collaboration and public writing exchange.</h2>
+          <p>Based in Seoul, Korea. Phone number and detailed address are intentionally omitted from the public homepage.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:ghwsocio@hanyang.ac.kr">Email</a>
+          <a href="https://matters.news/@PicaPica" target="_blank" rel="noopener noreferrer">Matters</a>
+          <a href="https://github.com/picapica2025" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer id="contact"><div class="shell footer-inner"><div><strong>Wang Guanxin · 王官鑫 · 왕관흠</strong><br />Seoul, Korea</div><div class="footer-links"><a href="mailto:ghwsocio@hanyang.ac.kr">Email</a><a href="https://matters.news/@PicaPica" target="_blank" rel="noopener noreferrer">Matters Blog</a><a href="https://github.com/picapica2025" target="_blank" rel="noopener noreferrer">GitHub</a></div></div></footer>
+
+  <footer class="shell">
+    <div class="footer-line">
+      <span>Wang Guanxin · 王官鑫 · 왕관흠</span>
+      <span>Sociology · Public writing · Seoul</span>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const updateProgress = () => {
+      const max = document.body.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? (window.scrollY / max) * 100 : 0;
+      root.style.setProperty('--progress', progress + '%');
+    };
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
 </body>
 </html>
