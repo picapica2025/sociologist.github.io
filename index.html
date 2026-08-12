@@ -41,6 +41,7 @@
       margin: 0;
       min-height: 100vh;
       overflow-x: hidden;
+      isolation: isolate;
       color: var(--ink);
       font-family: var(--sans);
       line-height: 1.62;
@@ -63,6 +64,48 @@
         linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
       background-size: 72px 72px;
       mask-image: linear-gradient(to bottom, #000, transparent 76%);
+      animation: grid-drift 24s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 34rem;
+      height: 34rem;
+      right: -13rem;
+      top: 18%;
+      z-index: -2;
+      pointer-events: none;
+      border-radius: 50%;
+      opacity: .42;
+      background: radial-gradient(circle, rgba(187,166,220,.38), rgba(187,166,220,0) 68%);
+      filter: blur(10px);
+      animation: ambient-drift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes grid-drift {
+      from { transform: translate3d(0, 0, 0) scale(1.04); }
+      to { transform: translate3d(18px, 12px, 0) scale(1.04); }
+    }
+
+    @keyframes ambient-drift {
+      from { transform: translate3d(0, -2%, 0) scale(.94); }
+      to { transform: translate3d(-12vw, 8%, 0) scale(1.08); }
+    }
+
+    @keyframes nav-arrive {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes hero-rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes details-rise {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     a { color: inherit; text-underline-offset: 4px; }
@@ -91,6 +134,7 @@
       top: 12px;
       z-index: 20;
       padding-top: 12px;
+      animation: nav-arrive .62s cubic-bezier(.22, 1, .36, 1) both;
     }
 
     .nav-shell {
@@ -213,7 +257,7 @@
       text-decoration: none;
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    .button:hover { transform: translateY(-2px); box-shadow: 0 21px 44px rgba(72,51,112,.22); }
+    .button:hover { transform: translateY(-2px) scale(1.015); box-shadow: 0 21px 44px rgba(72,51,112,.22); }
     .button.secondary { color: var(--violet-deep); background: rgba(255,255,255,.72); box-shadow: none; }
     .button.secondary:hover { background: #fff; }
 
@@ -295,12 +339,17 @@
       transition: transform .2s ease, background .2s ease;
     }
     .profile-card[open] .card-icon { transform: rotate(45deg); background: var(--lavender-soft); }
+    @media (hover: hover) {
+      .profile-card summary:hover .card-icon { transform: scale(1.06); background: #fff; }
+      .profile-card[open] summary:hover .card-icon { transform: rotate(45deg) scale(1.06); background: var(--lavender-soft); }
+    }
     .card-details { padding: 0 28px 30px 82px; }
     .card-details ul { display: grid; gap: 13px; margin: 0; padding: 24px 0 0; border-top: 1px solid var(--line); list-style: none; }
     .profile-card[open] .card-details ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 36px; }
     .card-details li { position: relative; padding-left: 17px; color: var(--ink-soft); font-size: 15px; line-height: 1.62; }
     .card-details li strong { color: var(--ink); font-weight: 700; }
     .card-details li::before { content: ""; position: absolute; left: 0; top: .66em; width: 5px; height: 5px; border-radius: 50%; background: var(--lavender); }
+    .profile-card[open] .card-details { animation: details-rise .36s cubic-bezier(.22, 1, .36, 1) both; }
 
     .contact-section { padding: 74px 0 0; }
     .contact-panel {
@@ -348,8 +397,34 @@
       font-size: 13px;
     }
 
-    .js [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .js [data-reveal].visible { opacity: 1; transform: none; }
+    .js [data-reveal] {
+      opacity: 0;
+      translate: 0 18px;
+      transition: opacity .65s ease, translate .65s cubic-bezier(.22, 1, .36, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+    .js [data-reveal].visible { opacity: 1; translate: none; }
+    .js .profile-card[data-reveal] {
+      transition-property: opacity, translate, transform, box-shadow, border-color;
+      transition-duration: .65s, .65s, .2s, .2s, .2s;
+      transition-timing-function: ease, cubic-bezier(.22, 1, .36, 1), ease, ease, ease;
+      transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms, 0ms, 0ms;
+    }
+    .js #about[data-reveal] { opacity: 1; translate: none; transition: none; }
+    .js #about > * { opacity: 0; transform: translateY(16px); }
+    .js #about.visible > * { animation: hero-rise .72s cubic-bezier(.22, 1, .36, 1) both; }
+    .js #about.visible > :nth-child(1) { animation-delay: .05s; }
+    .js #about.visible > :nth-child(2) { animation-delay: .13s; }
+    .js #about.visible > :nth-child(3) { animation-delay: .21s; }
+    .js #about.visible > :nth-child(4) { animation-delay: .29s; }
+    .js .quick-facts[data-reveal] { --reveal-delay: 140ms; translate: 18px 0; }
+    .js .quick-facts[data-reveal].visible { translate: none; }
+    .card-grid .profile-card:nth-child(2) { --reveal-delay: 45ms; }
+    .card-grid .profile-card:nth-child(3) { --reveal-delay: 90ms; }
+    .card-grid .profile-card:nth-child(4) { --reveal-delay: 135ms; }
+    .card-grid .profile-card:nth-child(5) { --reveal-delay: 180ms; }
+    .card-grid .profile-card:nth-child(6) { --reveal-delay: 45ms; }
+    .card-grid .profile-card:nth-child(7) { --reveal-delay: 90ms; }
 
     @media (max-width: 880px) {
       .hero { grid-template-columns: 1fr; min-height: auto; gap: 42px; padding: 52px 0 66px; }
@@ -396,13 +471,17 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
-      .js [data-reveal] { opacity: 1; transform: none; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .js [data-reveal] { opacity: 1; translate: none; }
+      .js #about > * { opacity: 1; transform: none; }
     }
 
     @media print {
       body { background: #fff; }
-      body::before, .topbar, .actions, .contact-links { display: none !important; }
+      body::before, body::after, .topbar, .actions, .contact-links { display: none !important; }
       main { padding: 0; }
       .hero { min-height: auto; padding: 20px 0 34px; }
       .quick-facts, .profile-card, .contact-panel { box-shadow: none; backdrop-filter: none; }
