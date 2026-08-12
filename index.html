@@ -192,6 +192,8 @@
       line-height: 1.55;
       letter-spacing: -.018em;
     }
+    .lead-status, .lead-research { display: block; }
+    .lead-research { margin-top: .48em; }
     .lead strong { color: var(--violet-deep); font-weight: 700; }
 
     .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
@@ -435,7 +437,10 @@
       <div id="about" data-reveal>
         <h1 id="hero-title">Wang Guanxin</h1>
         <p class="name-line">王官鑫 · 왕관흠</p>
-        <p class="lead">M.A. student in Sociology at Hanyang University. <strong>Research interests:</strong> qualitative sociological research, the sociology of ideology, social change, and gender studies.</p>
+        <p class="lead">
+          <span class="lead-status">M.A. student in Sociology at Hanyang University.</span>
+          <span class="lead-research"><strong>Research interests:</strong> qualitative sociological research, the sociology of ideology, social change, and gender studies.</span>
+        </p>
         <div class="actions" aria-label="Profile links">
           <a class="button" href="mailto:ghwsocio@hanyang.ac.kr">Email</a>
           <a class="button secondary" href="https://matters.news/@PicaPica" target="_blank" rel="noopener noreferrer">Public Writing</a>
