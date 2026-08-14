@@ -135,9 +135,9 @@
 
     .topbar {
       position: sticky;
-      top: 12px;
+      top: 10px;
       z-index: 20;
-      padding-top: 12px;
+      padding-top: 10px;
       animation: nav-arrive .78s cubic-bezier(.22, 1, .36, 1) both;
     }
 
@@ -146,8 +146,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      min-height: 60px;
-      padding: 9px 11px 9px 15px;
+      min-height: 56px;
+      padding: 7px 10px 7px 14px;
       border: 1px solid rgba(255,255,255,.84);
       border-radius: 22px;
       background: rgba(255,255,255,.76);
@@ -188,15 +188,15 @@
     }
     nav a:hover { color: var(--violet-deep); background: rgba(237,229,246,.72); }
 
-    main { padding: 32px 0 72px; }
+    main { padding: 16px 0 60px; }
 
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.55fr) minmax(270px, .72fr);
       gap: clamp(44px, 7vw, 84px);
       align-items: center;
-      min-height: 470px;
-      padding: 42px 0 66px;
+      min-height: auto;
+      padding: 28px 0 50px;
     }
 
     h1, h2, h3, p { margin-top: 0; }
@@ -279,16 +279,16 @@
     }
     .fact-list dd { margin: 6px 0 0; color: var(--ink-soft); font-size: 15.5px; line-height: 1.5; }
 
-    .profile-section { padding: 78px 0; border-top: 1px solid var(--line); }
+    .profile-section { padding: 64px 0; border-top: 1px solid var(--line); }
     .section-head {
-      margin-bottom: 34px;
+      margin-bottom: 28px;
     }
     .section-head::after {
       content: "";
       display: block;
       width: 112px;
       height: 3px;
-      margin-top: 24px;
+      margin-top: 18px;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--violet), var(--lavender), transparent);
       transform-origin: left center;
@@ -302,7 +302,7 @@
       letter-spacing: -.04em;
       white-space: nowrap;
     }
-    .card-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
     .profile-card {
       overflow: clip;
       border: 1px solid var(--line);
@@ -323,8 +323,8 @@
       grid-template-columns: 38px minmax(0, 1fr) 38px;
       gap: 16px;
       align-items: start;
-      min-height: 170px;
-      padding: 28px;
+      min-height: 154px;
+      padding: 24px;
       cursor: pointer;
       list-style: none;
     }
@@ -378,7 +378,7 @@
     .card-details li strong { color: var(--ink); font-weight: 700; }
     .card-details li::before { content: ""; position: absolute; left: 0; top: .66em; width: 5px; height: 5px; border-radius: 50%; background: var(--lavender); }
 
-    .contact-section { padding: 48px 0 0; }
+    .contact-section { padding: 40px 0 0; }
     .contact-panel {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -423,7 +423,7 @@
     }
     .contact-links a:focus-visible { outline-color: #fff; box-shadow: 0 0 0 6px #2b2237; }
 
-    footer { padding: 30px 0 48px; color: var(--muted); }
+    footer { padding: 24px 0 36px; color: var(--muted); }
     .footer-line {
       padding-top: 18px;
       border-top: 1px solid var(--line);
@@ -468,7 +468,7 @@
     }
 
     @media (max-width: 880px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; gap: 42px; padding: 52px 0 66px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; gap: 34px; padding: 36px 0 52px; }
       .quick-facts { display: block; }
       .fact-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
       .fact-list > div { padding: 0; border-top: 0; }
@@ -483,30 +483,30 @@
 
     @media (max-width: 680px) {
       .shell { width: min(var(--max), calc(100% - 26px)); }
-      .topbar { top: 7px; padding-top: 7px; }
-      .nav-shell { gap: 10px; min-height: 56px; padding: 8px 9px 8px 12px; border-radius: 18px; }
+      .topbar { top: 5px; padding-top: 5px; }
+      .nav-shell { gap: 10px; min-height: 52px; padding: 6px 8px 6px 11px; border-radius: 18px; }
       .brand { font-size: 14px; }
       nav { min-width: 0; overflow-x: auto; scrollbar-width: none; }
       nav::-webkit-scrollbar { display: none; }
       nav ul { width: max-content; }
       nav a { min-height: 34px; padding-inline: 9px; font-size: 12px; }
       nav a:focus-visible { outline-offset: -2px; }
-      main { padding-top: 22px; }
-      .hero { padding: 38px 0 54px; }
+      main { padding-top: 14px; }
+      .hero { padding: 26px 0 44px; }
       h1 { font-size: clamp(46px, 12.5vw, 56px); letter-spacing: -.045em; white-space: nowrap; }
       .name-line { margin-top: 14px; }
       .lead { margin-top: 21px; padding-top: 16px; }
       .lead-fields { grid-template-columns: 1fr; gap: 5px; font-size: 16px; }
-      .quick-facts { display: block; padding: 22px; }
+      .quick-facts { display: block; padding: 20px; }
       .fact-list { grid-template-columns: 1fr; gap: 0; }
       .fact-list > div { padding: 13px 0; border-top: 1px solid var(--line); }
       .fact-list > div:first-child { padding-top: 0; border-top: 0; }
-      .profile-section { padding: 60px 0; }
-      .profile-card summary { grid-template-columns: 32px minmax(0, 1fr) 34px; gap: 11px; min-height: 154px; padding: 22px 19px; }
+      .profile-section { padding: 52px 0; }
+      .profile-card summary { grid-template-columns: 32px minmax(0, 1fr) 34px; gap: 11px; min-height: 144px; padding: 20px 18px; }
       .card-icon { width: 32px; height: 32px; }
       .profile-card[open] .card-details ul { grid-template-columns: 1fr; gap: 12px; }
       .card-details { --details-bottom: 24px; padding-right: 20px; padding-left: 62px; }
-      .contact-section { padding-top: 36px; }
+      .contact-section { padding-top: 30px; }
       .contact-panel { gap: 14px; border-radius: 16px; }
       .contact-links a { flex: 1 1 auto; justify-content: center; }
     }
