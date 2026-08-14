@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Academic homepage of Wang Guanxin, an M.A. student in sociology at Hanyang University. Research interests include qualitative sociological research, the sociology of ideology, social change, and gender studies." />
+  <meta name="description" content="Academic homepage of Wang Guanxin at Hanyang University. Research interests include qualitative sociological research, the sociology of ideology, social change, and gender studies." />
   <meta name="theme-color" content="#f3f0f3" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://ghwsocio.social/" />
@@ -221,12 +221,40 @@
     .lead {
       max-width: 730px;
       margin: 27px 0 0;
-      color: var(--ink-soft);
-      font-size: clamp(18px, 1.8vw, 23px);
-      line-height: 1.55;
-      letter-spacing: -.018em;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
     }
-    .lead strong { color: var(--violet-deep); font-weight: 700; }
+    .lead-label {
+      margin: 0 0 9px;
+      color: var(--violet);
+      font-size: 10px;
+      font-weight: 760;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .lead-fields {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      gap: 6px 30px;
+      margin: 0;
+      padding: 0;
+      color: var(--ink-soft);
+      font-size: clamp(16.5px, 1.45vw, 19px);
+      line-height: 1.45;
+      letter-spacing: -.014em;
+      list-style: none;
+    }
+    .lead-fields li { position: relative; padding-left: 13px; white-space: nowrap; }
+    .lead-fields li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .62em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--lavender);
+    }
 
     .quick-facts {
       padding: 28px;
@@ -467,7 +495,8 @@
       .hero { padding: 38px 0 54px; }
       h1 { font-size: clamp(46px, 12.5vw, 56px); letter-spacing: -.045em; white-space: nowrap; }
       .name-line { margin-top: 14px; }
-      .lead { margin-top: 21px; font-size: 18px; line-height: 1.58; }
+      .lead { margin-top: 21px; padding-top: 16px; }
+      .lead-fields { grid-template-columns: 1fr; gap: 5px; font-size: 16px; }
       .quick-facts { display: block; padding: 22px; }
       .fact-list { grid-template-columns: 1fr; gap: 0; }
       .fact-list > div { padding: 13px 0; border-top: 1px solid var(--line); }
@@ -530,14 +559,22 @@
       <div id="about" data-reveal>
         <h1 id="hero-title">Wang Guanxin</h1>
         <p class="name-line">王官鑫 · 왕관흠</p>
-        <p class="lead"><strong>Research interests:</strong> qualitative sociological research, the sociology of ideology, social change, and gender studies.</p>
+        <div class="lead">
+          <p class="lead-label">Research interests</p>
+          <ul class="lead-fields">
+            <li>Qualitative sociological research</li>
+            <li>The sociology of ideology</li>
+            <li>Social change</li>
+            <li>Gender studies</li>
+          </ul>
+        </div>
       </div>
 
       <aside class="quick-facts" aria-label="Key facts" data-reveal>
         <dl class="fact-list">
-          <div><dt>Academic status</dt><dd>M.A. student in Sociology, Hanyang University</dd></div>
+          <div><dt>Institution</dt><dd>Hanyang University</dd></div>
           <div><dt>Location</dt><dd>Seoul, South Korea</dd></div>
-          <div><dt>Languages</dt><dd>Chinese · Korean · English · Japanese</dd></div>
+          <div><dt>Languages</dt><dd>Chinese · English · Korean · Japanese</dd></div>
         </dl>
       </aside>
     </section>
