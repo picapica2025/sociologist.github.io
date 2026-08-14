@@ -97,11 +97,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes details-rise {
-      from { opacity: 0; transform: translateY(-7px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @keyframes line-sweep {
       from { opacity: 0; transform: scaleX(0); }
       to { opacity: 1; transform: scaleX(1); }
@@ -279,7 +274,7 @@
       letter-spacing: -.04em;
       white-space: nowrap;
     }
-    .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
     .profile-card {
       overflow: clip;
       border: 1px solid var(--line);
@@ -293,8 +288,7 @@
     @media (hover: hover) {
       .profile-card:hover { transform: translateY(-3px); border-color: rgba(104,79,152,.28); box-shadow: 0 22px 56px rgba(62,45,83,.12); }
     }
-    .profile-card.featured-card { grid-column: 1 / -1; }
-    .profile-card[open] { grid-column: 1 / -1; background: rgba(255,255,255,.94); }
+    .profile-card[open] { background: rgba(255,255,255,.94); }
 
     .profile-card summary {
       display: grid;
@@ -329,22 +323,41 @@
       .profile-card summary:hover .card-icon { transform: scale(1.06); background: #fff; }
       .profile-card[open] summary:hover .card-icon { transform: rotate(45deg) scale(1.06); background: var(--lavender-soft); }
     }
-    .card-details { padding: 0 28px 30px 82px; }
-    .card-details ul { display: grid; gap: 13px; margin: 0; padding: 24px 0 0; border-top: 1px solid var(--line); list-style: none; }
+    .profile-card.is-closing .card-icon { transform: rotate(0); background: rgba(255,255,255,.63); }
+    .card-details {
+      --details-bottom: 30px;
+      display: grid;
+      grid-template-rows: 1fr;
+      padding: 0 28px var(--details-bottom) 82px;
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        grid-template-rows .46s cubic-bezier(.22, 1, .36, 1),
+        padding-bottom .46s cubic-bezier(.22, 1, .36, 1),
+        opacity .3s ease,
+        transform .46s cubic-bezier(.22, 1, .36, 1);
+    }
+    .profile-card.is-opening .card-details,
+    .profile-card.is-closing .card-details {
+      --details-bottom: 0px;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    .card-details ul { min-height: 0; overflow: hidden; display: grid; gap: 13px; margin: 0; padding: 24px 0 0; border-top: 1px solid var(--line); list-style: none; }
     .profile-card[open] .card-details ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 36px; }
     .card-details li { position: relative; padding-left: 17px; color: var(--ink-soft); font-size: 15px; line-height: 1.62; }
     .card-details li strong { color: var(--ink); font-weight: 700; }
     .card-details li::before { content: ""; position: absolute; left: 0; top: .66em; width: 5px; height: 5px; border-radius: 50%; background: var(--lavender); }
-    .profile-card[open] .card-details { animation: details-rise .32s cubic-bezier(.22, 1, .36, 1) both; }
 
-    .contact-section { padding: 74px 0 0; }
+    .contact-section { padding: 58px 0 0; }
     .contact-panel {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 42px;
+      gap: 28px;
       align-items: center;
-      padding: clamp(34px, 6vw, 64px);
-      border-radius: 24px;
+      padding: clamp(24px, 4vw, 40px);
+      border-radius: 20px;
       color: #fff;
       background:
         radial-gradient(circle at 12% 8%, rgba(151,128,183,.18), transparent 22rem),
@@ -354,24 +367,24 @@
       box-shadow: 0 28px 72px rgba(32,24,47,.17);
     }
     .contact-panel h2 {
-      max-width: 560px;
+      max-width: 480px;
       margin: 0;
-      font-size: clamp(26px, 3.2vw, 38px);
+      font-size: clamp(21px, 2.2vw, 28px);
       font-weight: 600;
-      line-height: 1.14;
-      letter-spacing: -.032em;
+      line-height: 1.18;
+      letter-spacing: -.025em;
     }
-    .contact-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
     .contact-links a {
       display: inline-flex;
       align-items: center;
-      min-height: 44px;
-      padding-inline: 15px;
+      min-height: 40px;
+      padding-inline: 13px;
       border: 1px solid rgba(255,255,255,.3);
       border-radius: 999px;
       color: #fff;
       background: rgba(255,255,255,.11);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 680;
       text-decoration: none;
       transition: background .2s ease, transform .2s ease;
@@ -459,14 +472,12 @@
       .fact-list > div { padding: 13px 0; border-top: 1px solid var(--line); }
       .fact-list > div:first-child { padding-top: 0; border-top: 0; }
       .profile-section { padding: 60px 0; }
-      .card-grid { grid-template-columns: 1fr; }
-      .profile-card.featured-card, .profile-card[open] { grid-column: auto; }
       .profile-card summary { grid-template-columns: 32px minmax(0, 1fr) 34px; gap: 11px; min-height: 154px; padding: 22px 19px; }
       .card-icon { width: 32px; height: 32px; }
       .profile-card[open] .card-details ul { grid-template-columns: 1fr; gap: 12px; }
-      .card-details { padding: 0 20px 24px 62px; }
-      .contact-section { padding-top: 56px; }
-      .contact-panel { gap: 28px; border-radius: 20px; }
+      .card-details { --details-bottom: 24px; padding-right: 20px; padding-left: 62px; }
+      .contact-section { padding-top: 44px; }
+      .contact-panel { gap: 18px; border-radius: 18px; }
       .contact-links a { flex: 1 1 auto; justify-content: center; }
     }
 
@@ -536,7 +547,7 @@
       </div>
 
       <div class="card-grid">
-        <details class="profile-card featured-card" data-reveal>
+        <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">01</span>
             <span class="card-copy"><h3>Research Interests</h3><p>Qualitative sociological research, the sociology of ideology, social change, and gender studies.</p></span>
@@ -550,7 +561,7 @@
           </ul></div>
         </details>
 
-        <details class="profile-card featured-card" data-reveal>
+        <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">02</span>
             <span class="card-copy"><h3>Selected Academic Work</h3><p>Undergraduate research, feminist research activity, reading groups, and academic seminars.</p></span>
@@ -566,7 +577,7 @@
           </ul></div>
         </details>
 
-        <details class="profile-card featured-card" data-reveal>
+        <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">03</span>
             <span class="card-copy"><h3>Public Writing</h3><p>Essays, sociology-informed notes, interviews, and editorial work for broader audiences.</p></span>
@@ -579,7 +590,7 @@
           </ul></div>
         </details>
 
-        <details class="profile-card featured-card" data-reveal>
+        <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">04</span>
             <span class="card-copy"><h3>Education</h3><p>M.A. study in sociology, a B.A. in sociology, prior study in digital media, and international exchange training.</p></span>
@@ -594,7 +605,7 @@
           </ul></div>
         </details>
 
-        <details class="profile-card featured-card" data-reveal>
+        <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">05</span>
             <span class="card-copy"><h3>Selected Experience</h3><p>Academic service, civic and cultural volunteering, editorial work, translation, and migrant-women support.</p></span>
@@ -682,12 +693,63 @@
     }
 
     const cards = Array.from(document.querySelectorAll('.profile-card'));
+    const closingTimers = new WeakMap();
+
+    function clearClosingTimer(card) {
+      const timer = closingTimers.get(card);
+      if (timer) window.clearTimeout(timer);
+      closingTimers.delete(card);
+    }
+
+    function closeCard(card) {
+      if (!card.open) return;
+      clearClosingTimer(card);
+      card.classList.remove('is-opening');
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        card.open = false;
+        card.classList.remove('is-closing');
+        return;
+      }
+
+      card.classList.add('is-closing');
+      const timer = window.setTimeout(() => {
+        card.open = false;
+        card.classList.remove('is-closing');
+        closingTimers.delete(card);
+      }, 480);
+      closingTimers.set(card, timer);
+    }
+
+    function openCard(card) {
+      clearClosingTimer(card);
+      cards.forEach((other) => {
+        if (other !== card) closeCard(other);
+      });
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        card.classList.remove('is-opening', 'is-closing');
+        card.open = true;
+        return;
+      }
+
+      card.classList.remove('is-closing');
+      card.classList.add('is-opening');
+      card.open = true;
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => card.classList.remove('is-opening'));
+      });
+    }
+
     cards.forEach((card) => {
-      card.addEventListener('toggle', () => {
-        if (!card.open) return;
-        cards.forEach((other) => {
-          if (other !== card) other.open = false;
-        });
+      const summary = card.querySelector('summary');
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (card.open && !card.classList.contains('is-closing')) {
+          closeCard(card);
+        } else {
+          openCard(card);
+        }
       });
     });
   </script>
