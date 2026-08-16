@@ -502,10 +502,22 @@
       .fact-list > div { padding: 13px 0; border-top: 1px solid var(--line); }
       .fact-list > div:first-child { padding-top: 0; border-top: 0; }
       .profile-section { padding: 52px 0; }
-      .profile-card summary { grid-template-columns: 32px minmax(0, 1fr) 34px; gap: 11px; min-height: 144px; padding: 20px 18px; }
-      .card-icon { width: 32px; height: 32px; }
+      .profile-card summary {
+        grid-template-columns: minmax(0, 1fr) 32px;
+        grid-template-rows: auto auto;
+        gap: 8px 12px;
+        min-height: 138px;
+        padding: 18px;
+      }
+      .card-index { grid-column: 1; grid-row: 1; padding-top: 0; }
+      .card-copy { grid-column: 1; grid-row: 2; min-width: 0; }
+      .card-copy h3 { font-size: 24px; line-height: 1.08; }
+      .card-copy p { max-width: none; margin-top: 9px; font-size: 14.5px; line-height: 1.48; }
+      .card-icon { grid-column: 2; grid-row: 1 / span 2; align-self: start; width: 32px; height: 32px; }
       .profile-card[open] .card-details ul { grid-template-columns: 1fr; gap: 12px; }
-      .card-details { --details-bottom: 24px; padding-right: 20px; padding-left: 62px; }
+      .card-details { --details-bottom: 22px; padding-right: 18px; padding-left: 18px; }
+      .card-details ul { padding-top: 18px; }
+      .card-details li { font-size: 14.5px; line-height: 1.56; }
       .contact-section { padding-top: 30px; }
       .contact-panel { gap: 14px; border-radius: 16px; }
       .contact-links a { flex: 1 1 auto; justify-content: center; }
