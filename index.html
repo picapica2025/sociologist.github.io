@@ -150,7 +150,7 @@
       padding: 7px 10px 7px 14px;
       border: 1px solid rgba(255,255,255,.84);
       border-radius: 22px;
-      background: rgba(255,255,255,.76);
+      background: rgba(253,252,253,.9);
       box-shadow: 0 9px 30px rgba(62,45,83,.07);
       backdrop-filter: blur(24px) saturate(160%);
       -webkit-backdrop-filter: blur(24px) saturate(160%);
@@ -484,7 +484,7 @@
     @media (max-width: 680px) {
       .shell { width: min(var(--max), calc(100% - 26px)); }
       .topbar { top: 5px; padding-top: 5px; }
-      .nav-shell { gap: 10px; min-height: 52px; padding: 6px 8px 6px 11px; border-radius: 18px; }
+      .nav-shell { gap: 10px; min-height: 52px; padding: 6px 8px 6px 11px; border-radius: 18px; background: rgba(253,252,253,.94); }
       .brand { font-size: 14px; }
       nav { min-width: 0; overflow-x: auto; scrollbar-width: none; }
       nav::-webkit-scrollbar { display: none; }
@@ -537,14 +537,41 @@
 
     @media print {
       body { background: #fff; }
-      body::before, body::after, .topbar, .contact-links { display: none !important; }
+      body::before, body::after, .topbar { display: none !important; }
+      .js [data-reveal],
+      .js #about > *,
+      .js .section-head::after,
+      .js .contact-section .contact-panel {
+        opacity: 1 !important;
+        translate: none !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+      }
       main { padding: 0; }
       .hero { min-height: auto; padding: 20px 0 34px; }
       .quick-facts, .profile-card, .contact-panel { box-shadow: none; backdrop-filter: none; }
+      .profile-section { padding: 36px 0; }
+      .section-head { margin-bottom: 18px; }
+      .section-head::after { display: none; }
+      .card-grid { gap: 10px; }
       .profile-card { break-inside: avoid; border: 1px solid #ddd; }
-      .profile-card[open] .card-details { display: block; }
-      .profile-card[open] .card-details ul { grid-template-columns: 1fr; }
-      .contact-panel { color: var(--ink); background: #fff; border: 1px solid #ddd; }
+      .profile-card summary { grid-template-columns: 38px minmax(0, 1fr); grid-template-rows: auto; min-height: auto; padding: 18px 20px 12px; cursor: default; }
+      .card-index { grid-column: 1; grid-row: 1; padding-top: 4px; }
+      .card-copy { grid-column: 2; grid-row: 1; }
+      .card-copy h3 { font-size: 24px; }
+      .card-copy p { margin-top: 7px; font-size: 12.5px; }
+      .card-icon { display: none !important; }
+      .profile-card .card-details { display: block !important; padding: 0 20px 18px; opacity: 1 !important; transform: none !important; }
+      .profile-card .card-details ul { grid-template-columns: 1fr !important; gap: 8px; padding-top: 12px; overflow: visible !important; }
+      .card-details li { font-size: 12.5px; line-height: 1.45; }
+      .contact-section { padding-top: 24px; }
+      .contact-panel { grid-template-columns: 1fr; gap: 9px; padding: 16px; color: var(--ink); background: #fff; border: 1px solid #ddd; }
+      .contact-panel h2 { font-size: 16px; white-space: normal; }
+      .contact-links { display: flex !important; justify-content: flex-start; gap: 6px 18px; }
+      .contact-links a { min-height: auto; padding: 0; border: 0; color: var(--ink); background: none; font-size: 0; box-shadow: none; text-decoration: underline; }
+      .contact-links a:first-child::after { content: "ghwsocio@hanyang.ac.kr"; font-size: 12px; }
+      .contact-links a:nth-child(2)::after { content: "matters.news/@PicaPica"; font-size: 12px; }
     }
   </style>
 </head>
