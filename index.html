@@ -187,6 +187,10 @@
       transition: color .2s ease, background .2s ease;
     }
     nav a:hover { color: var(--violet-deep); background: rgba(237,229,246,.72); }
+    nav a[aria-current="location"] {
+      color: var(--violet-deep);
+      background: rgba(231,225,234,.82);
+    }
 
     main { padding: 16px 0 60px; }
 
@@ -331,8 +335,8 @@
     .profile-card summary:focus-visible { outline-offset: -4px; }
     .profile-card summary::-webkit-details-marker { display: none; }
     .card-index { padding-top: 6px; color: var(--violet); font-family: var(--sans); font-size: 11px; font-weight: 760; letter-spacing: .1em; }
-    .card-copy h3 { margin: 0; font-size: clamp(27px, 3vw, 34px); font-weight: 600; line-height: 1.06; letter-spacing: -.035em; }
-    .card-copy p { max-width: 570px; margin: 13px 0 0; color: var(--muted); font-size: 15.5px; line-height: 1.55; }
+    .card-title { display: block; margin: 0; font-size: clamp(27px, 3vw, 34px); font-weight: 600; line-height: 1.06; letter-spacing: -.035em; }
+    .card-summary { display: block; max-width: 570px; margin: 13px 0 0; color: var(--muted); font-size: 15.5px; line-height: 1.55; }
     .card-icon {
       display: grid;
       place-items: center;
@@ -511,8 +515,8 @@
       }
       .card-index { grid-column: 1; grid-row: 1; padding-top: 0; }
       .card-copy { grid-column: 1; grid-row: 2; min-width: 0; }
-      .card-copy h3 { font-size: 24px; line-height: 1.08; }
-      .card-copy p { max-width: none; margin-top: 9px; font-size: 14.5px; line-height: 1.48; }
+      .card-title { font-size: 24px; line-height: 1.08; }
+      .card-summary { max-width: none; margin-top: 9px; font-size: 14.5px; line-height: 1.48; }
       .card-icon { grid-column: 2; grid-row: 1 / span 2; align-self: start; width: 32px; height: 32px; }
       .profile-card[open] .card-details ul { grid-template-columns: 1fr; gap: 12px; }
       .card-details { --details-bottom: 22px; padding-right: 18px; padding-left: 18px; }
@@ -559,8 +563,8 @@
       .profile-card summary { grid-template-columns: 38px minmax(0, 1fr); grid-template-rows: auto; min-height: auto; padding: 18px 20px 12px; cursor: default; }
       .card-index { grid-column: 1; grid-row: 1; padding-top: 4px; }
       .card-copy { grid-column: 2; grid-row: 1; }
-      .card-copy h3 { font-size: 24px; }
-      .card-copy p { margin-top: 7px; font-size: 12.5px; }
+      .card-title { font-size: 24px; }
+      .card-summary { margin-top: 7px; font-size: 12.5px; }
       .card-icon { display: none !important; }
       .profile-card .card-details { display: block !important; padding: 0 20px 18px; opacity: 1 !important; transform: none !important; }
       .profile-card .card-details ul { grid-template-columns: 1fr !important; gap: 8px; padding-top: 12px; overflow: visible !important; }
@@ -627,7 +631,7 @@
         <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">01</span>
-            <span class="card-copy"><h3>Research Interests</h3><p>Qualitative sociological research, sociology of ideology, social change, and gender studies.</p></span>
+            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Research Interests</span><span class="card-summary">Qualitative sociological research, sociology of ideology, social change, and gender studies.</span></span>
             <span class="card-icon" aria-hidden="true">+</span>
           </summary>
           <div class="card-details"><ul>
@@ -641,7 +645,7 @@
         <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">02</span>
-            <span class="card-copy"><h3>Selected Academic Work</h3><p>Undergraduate research, feminist research, reading groups, and academic seminars.</p></span>
+            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Selected Academic Work</span><span class="card-summary">Undergraduate research, feminist research, reading groups, and academic seminars.</span></span>
             <span class="card-icon" aria-hidden="true">+</span>
           </summary>
           <div class="card-details"><ul>
@@ -657,7 +661,7 @@
         <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">03</span>
-            <span class="card-copy"><h3>Public Writing</h3><p>Public essays, interviews, and editorial work informed by sociological inquiry.</p></span>
+            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Public Writing</span><span class="card-summary">Public essays, interviews, and editorial work informed by sociological inquiry.</span></span>
             <span class="card-icon" aria-hidden="true">+</span>
           </summary>
           <div class="card-details"><ul>
@@ -670,7 +674,7 @@
         <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">04</span>
-            <span class="card-copy"><h3>Education</h3><p>Graduate study in sociology, a B.A. in Sociology, prior study in digital media, and international exchange programs.</p></span>
+            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Education</span><span class="card-summary">Graduate study in sociology, a B.A. in Sociology, prior study in digital media, and international exchange programs.</span></span>
             <span class="card-icon" aria-hidden="true">+</span>
           </summary>
           <div class="card-details"><ul>
@@ -685,7 +689,7 @@
         <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">05</span>
-            <span class="card-copy"><h3>Selected Experience</h3><p>Academic service, civic and cultural volunteering, editorial work, translation, and support for migrant women.</p></span>
+            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Selected Experience</span><span class="card-summary">Academic service, civic and cultural volunteering, editorial work, translation, and support for migrant women.</span></span>
             <span class="card-icon" aria-hidden="true">+</span>
           </summary>
           <div class="card-details"><ul>
@@ -707,7 +711,7 @@
         <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">06</span>
-            <span class="card-copy"><h3>Skills</h3><p>Research support, academic information retrieval, data and office tools, writing and editing, and digital media.</p></span>
+            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Skills</span><span class="card-summary">Research support, academic information retrieval, data and office tools, writing and editing, and digital media.</span></span>
             <span class="card-icon" aria-hidden="true">+</span>
           </summary>
           <div class="card-details"><ul>
@@ -721,7 +725,7 @@
         <details class="profile-card" data-reveal>
           <summary>
             <span class="card-index">07</span>
-            <span class="card-copy"><h3>Honors &amp; Awards</h3><p>Full and partial merit-based scholarships, including the Hanyang International Scholarship, and magna cum laude honors.</p></span>
+            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Honors &amp; Awards</span><span class="card-summary">Full and partial merit-based scholarships, including the Hanyang International Scholarship, and magna cum laude honors.</span></span>
             <span class="card-icon" aria-hidden="true">+</span>
           </summary>
           <div class="card-details"><ul>
@@ -766,6 +770,50 @@
       document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
     } else {
       document.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('visible'));
+    }
+
+    const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+    const navSections = navLinks
+      .map((link) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        return target ? { link, target } : null;
+      })
+      .filter(Boolean);
+    let navUpdateQueued = false;
+
+    function updateActiveNav() {
+      const marker = window.scrollY + Math.min(window.innerHeight * .35, 220);
+      let active = navSections[0];
+
+      navSections.forEach((section) => {
+        const top = section.target.getBoundingClientRect().top + window.scrollY;
+        if (top <= marker) active = section;
+      });
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        active = navSections[navSections.length - 1];
+      }
+
+      navSections.forEach(({ link }) => {
+        if (link === active.link) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+      navUpdateQueued = false;
+    }
+
+    function queueActiveNavUpdate() {
+      if (navUpdateQueued) return;
+      navUpdateQueued = true;
+      window.requestAnimationFrame(updateActiveNav);
+    }
+
+    if (navSections.length) {
+      window.addEventListener('scroll', queueActiveNavUpdate, { passive: true });
+      window.addEventListener('resize', queueActiveNavUpdate);
+      updateActiveNav();
     }
 
     const cards = Array.from(document.querySelectorAll('.profile-card'));
