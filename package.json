@@ -1,0 +1,19 @@
+{
+  "name": "wang-guanxin-academic-profile",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.8.0" },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "check:html": "html-validate index.html",
+    "test": "playwright test",
+    "check": "npm run check:html && npm test",
+    "build": "node scripts/build.mjs",
+    "assets": "node scripts/render-share-card.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "html-validate": "11.15.0"
+  }
+}
