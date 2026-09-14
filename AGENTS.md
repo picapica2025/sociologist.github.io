@@ -17,6 +17,8 @@
 
 ## Verification and publication
 
+- Current release topology (2026-09-14): remote `upgrade/editorial-20260914` holds full source; local `source/editorial-20260914` tracks it. `main` holds only the six public files and still triggers legacy Pages. Do not merge the full-source draft PR into main. Follow the current-state section of README; manual Actions publishing is not enabled.
+
 - Use Node 24.8 or later and `npm ci --ignore-scripts`. Dependencies are development-only and locked.
 - Run `npm run check:html`, `npm run build`, and the browser tests against `dist` as described in README.md.
 - Check actual printed body visibility, not only bounding boxes or `display`. Retain the original disclosure state after print.

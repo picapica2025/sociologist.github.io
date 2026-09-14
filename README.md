@@ -43,6 +43,14 @@ Windows 已安装 Edge 时，可先设 `$env:PLAYWRIGHT_CHANNEL = 'msedge'`，�
 
 ## 发布流程
 
+### 当前实际状态（2026-09-14）
+
+新版已通过远端 11 项浏览器测试（Actions run `34811302597`），发布提交为 `a62a6d4`。当前仍使用原有分支式 Pages 发布；`main` **只保存六个公开文件**。完整维护源码位于远端 `upgrade/editorial-20260914`，本地跟踪分支为 `source/editorial-20260914`。旧维护分支保留，不要将完整源码 PR 合并到 `main`。
+
+当前发布顺序：在源码分支验收 → 仅从 `scripts/public-files.mjs` 提取公开文件生成发布提交 → 非强制更新 `main` → 等待 Pages 成功 → 比对线上字节及两个域名入口。源码验证 PR #1 为草稿，不是待合并的生产发布 PR。若常规 Git 推送受宿主限制，可使用 Git data API 镜像已提交的本地文件树；必须随后 fetch 并验证公开文件差异为空，不能使用 Contents API 绕过历史。
+
+下列手动 Actions 部署方案尚未启用；只有完成 Pages 设置迁移后才能按此运行。
+
 1. 在干净分支上修改，先运行上述完整验收。使用常规 Git 提交与合并，避免再出现远端更新而本地引用长期落后的情况。
 2. 首次启用本工作流前，确认 GitHub 仓库 **Settings → Pages → Build and deployment → Source** 已设为 **GitHub Actions**。若仍为旧的分支发布模式，推送 `main` 仍可能由旧流程直接上线，因此需要先核对设置。
 3. `.github/workflows/site.yml` 在 PR 与 `main` 推送时执行质量检查。通过检查本身不会触发此工作流的部署。
