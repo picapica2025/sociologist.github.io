@@ -71,11 +71,7 @@ h1{margin:0;font-size:clamp(58px,7vw,86px);font-weight:500;line-height:1;letter-
 .card-icon{display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;color:var(--violet);font-size:19px;line-height:1;transition:transform .22s,border-color .22s}
 .profile-card[open] .card-icon{transform:rotate(45deg);border-color:var(--violet)}.profile-card.is-closing .card-icon{transform:none}
 @media(hover:hover){.profile-card summary:hover .card-title{color:var(--violet)}.profile-card summary:hover .card-icon{border-color:var(--violet)}}
-.featured-card{margin-bottom:8px;padding-inline:26px;border:1px solid #ded7e3;border-radius:8px;background:#f0edf2}
-.featured-card summary{padding-block:26px}.featured-card .card-title{font-family:var(--sans);font-size:11px;font-weight:650;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}
-.featured-card .card-index{padding-top:1px}.featured-card .card-summary{color:var(--ink);margin-top:18px}
-.work-kind{display:block;font:12px/1.5 var(--sans);color:var(--muted);margin-bottom:8px}
-.featured-card .card-summary em{display:block;max-width:40ch;font-family:var(--serif);font-size:clamp(23px,2.8vw,31px);font-weight:500;line-height:1.35;font-style:normal;letter-spacing:-.015em}
+.academic-card .thesis-title{font-size:inherit;line-height:inherit}
 .card-details{--details-bottom:26px;display:grid;grid-template-rows:1fr;padding:0 49px var(--details-bottom) 43px;opacity:1;transform:translateY(0);transition:grid-template-rows .38s cubic-bezier(.22,1,.36,1),padding-bottom .38s cubic-bezier(.22,1,.36,1),opacity .25s ease,transform .38s cubic-bezier(.22,1,.36,1)}
 .profile-card.is-opening .card-details,.profile-card.is-closing .card-details{--details-bottom:0px;grid-template-rows:0fr;opacity:0;transform:translateY(-6px)}
 .card-details ul{min-height:0;overflow:hidden;display:grid;gap:14px;padding:18px 0 0;margin:0;border-top:1px solid var(--line);list-style:none}
@@ -91,7 +87,7 @@ h1{margin:0;font-size:clamp(58px,7vw,86px);font-weight:500;line-height:1;letter-
 .contact-links{display:flex;flex-wrap:wrap;gap:20px}.contact-links a{display:inline-flex;min-height:40px;align-items:center;font-size:13px;font-weight:550;color:var(--violet-deep);text-decoration-thickness:1px;transition:color .2s}.contact-links a:hover{color:var(--violet)}
 footer{padding:0 0 24px;color:var(--muted);font-size:11px}.footer-line{padding-top:8px}
 .js [data-reveal]{opacity:0;translate:0 10px;transition:opacity .4s ease,translate .4s ease}.js [data-reveal].visible{opacity:1;translate:none}
-.js #about[data-reveal],.js .featured-card[data-reveal]{opacity:1;translate:none}
+.js #about[data-reveal],.js .academic-card[data-reveal]{opacity:1;translate:none}
 @media(max-width:880px){
 .hero{grid-template-columns:1fr;gap:24px;padding:32px 0}.quick-facts{border-left:0;border-top:1px solid var(--line);padding:18px 0 0}
 .fact-list{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:20px}.fact-list>div+div{margin-top:0}
@@ -106,9 +102,7 @@ footer{padding:0 0 24px;color:var(--muted);font-size:11px}.footer-line{padding-t
 .profile-section{padding-top:24px}.section-head{margin-bottom:18px}
 .profile-card summary{grid-template-columns:18px minmax(0,1fr) 25px;gap:10px;padding-block:20px}.card-title{font-size:22px}.card-summary{font-size:13px}
 .card-index{font-size:9px;padding-top:5px}.card-icon{width:25px;height:25px;font-size:17px}
-.featured-card{padding-inline:15px}.featured-card summary{gap:8px;padding-block:20px;grid-template-columns:minmax(0,1fr) 25px}.featured-card .card-index{display:none}
-.featured-card .card-title{font-size:10px}.featured-card .card-summary{margin-top:13px}.featured-card .card-summary em{font-size:23px}
-.card-details{padding-left:28px;padding-right:0;--details-bottom:21px}.featured-card .card-details{padding-left:0}.card-details li{font-size:14px}
+.card-details{padding-left:28px;padding-right:0;--details-bottom:21px}.card-details li{font-size:14px}
 .topic-card .card-details ul,.skills-card .card-details ul{grid-template-columns:1fr;gap:14px}
 .timeline-card .card-details li{grid-template-columns:1fr;gap:4px;padding-block:13px}.entry-year,.experience-card .entry-year{font-size:11px}
 .contact-section{padding-top:22px}.contact-panel{padding-top:17px}.contact-panel h2{font-size:12.5px}main{padding-bottom:17px}
@@ -120,7 +114,7 @@ html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transiti
 body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [data-reveal]{opacity:1!important;translate:none!important;transition:none!important}
 .shell{width:94%}.hero{padding:14px 0 20px;gap:16px}h1{font-size:50px}.profile-section{padding-top:20px}.section-head{margin-bottom:14px}.section-head h2{font-size:27px}
 .profile-card{break-inside:avoid}.profile-card::details-content{content-visibility:visible}.profile-card summary{grid-template-columns:20px minmax(0,1fr);padding-block:13px}
-.featured-card{background:#fff;padding-inline:16px}.featured-card .card-summary em{font-size:23px}.card-title{font-size:20px}.card-summary{font-size:11px}
+.card-title{font-size:20px}.card-summary{font-size:11px}
 .card-details{display:block!important;opacity:1!important;transform:none!important;padding:0 0 18px 39px}
 .card-details ul{overflow:visible!important;gap:9px;padding-top:10px}.card-details li{font-size:11px;line-height:1.5}
 .timeline-card .card-details li{grid-template-columns:90px minmax(0,1fr);padding-block:9px;gap:18px}.entry-year,.experience-card .entry-year{font-size:10px}
@@ -179,18 +173,19 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
       </div>
 
       <div class="card-grid">
-        <details class="profile-card featured-card" data-reveal>
+        <details class="profile-card academic-card timeline-card" data-reveal>
           <summary>
             <span class="card-index" aria-hidden="true">01</span>
-            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Selected Academic Work</span><span class="card-summary"><span class="work-kind">Undergraduate thesis</span><em>A Study on Subjectivity Formation and Resistant Politics in Chinese Society: Focusing on the Fengxian Incident.</em></span></span>
+            <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Selected Academic Work</span><span class="card-summary">Thesis, research projects, and seminars.</span></span>
             <span class="card-icon" aria-hidden="true">+</span>
           </summary>
           <div class="card-details"><ul>
-            <li><strong>2022.</strong> Researcher, Feminist Project, Fudan University.</li>
-            <li><strong>Feminist reading group.</strong> Recruitment initiative at the College of Social Sciences, Hanyang University.</li>
-            <li><strong>2020–2022.</strong> Writer, editor, and member of Academic Symposium Forêt; contributed to research on war and sexual violence and to a seminar on animal rights.</li>
-            <li><strong>2023.</strong> Seminar course on democratization and climate and environmental issues, Asia Democracy Network.</li>
-            <li><strong>2022.</strong> <em>Where Is China Going and Why: The Party State and Global Order</em>, The New University in Exile Consortium.</li>
+            <li><span class="entry-year">Undergraduate thesis</span><span class="entry-text"><em class="thesis-title">A Study on Subjectivity Formation and Resistant Politics in Chinese Society: Focusing on the Fengxian Incident.</em></span></li>
+            <li><span class="entry-year">2022</span><span class="entry-text">Researcher, Feminist Project, Fudan University.</span></li>
+            <li><span class="entry-year">Feminist reading group</span><span class="entry-text">Recruitment initiative at the College of Social Sciences, Hanyang University.</span></li>
+            <li><span class="entry-year">2020–2022</span><span class="entry-text">Writer, editor, and member of Academic Symposium Forêt; contributed to research on war and sexual violence and to a seminar on animal rights.</span></li>
+            <li><span class="entry-year">2023</span><span class="entry-text">Seminar course on democratization and climate and environmental issues, Asia Democracy Network.</span></li>
+            <li><span class="entry-year">2022</span><span class="entry-text"><em>Where Is China Going and Why: The Party State and Global Order</em>, The New University in Exile Consortium.</span></li>
           </ul></div>
         </details>
 

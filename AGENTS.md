@@ -26,3 +26,11 @@
 - Keep `scripts/public-files.mjs` as the explicit publication allowlist. Do not deploy test reports, source CV files, package files, or the entire repository root.
 - The heading-role exception in `.htmlvalidate.json` preserves the phrasing-content structure inside each summary; other recommended HTML checks remain enabled.
 - Follow the user's publication authorization. Local tests are not proof of a successful remote workflow or deployment. After publishing, compare local, remote, and live content and verify both domain routes.
+
+## Mandatory visual acceptance (user request, 2026-09-16)
+
+- Passing automated tests is not visual approval. Inspect actual rendered screenshots before claiming that the interface has been checked.
+- Before every release, inspect the initial screen and all seven sections collapsed and expanded at desktop (1280 px), mobile (390 px), and narrow mobile (320 px) widths. Pay particular attention to the first section and long academic entries.
+- Review hierarchy, font sizes, line wrapping, spacing, alignment, and consistency, not just overflow or element visibility. Verify disclosure transitions and keyboard/reduced-motion behavior separately.
+- Keep the seven section headers compact and consistent. The full undergraduate thesis title belongs in the expanded academic-work content, not an oversized collapsed summary, unless the user explicitly requests otherwise. Preserve full research, award, and grade details.
+- After deployment, reload the real public website and inspect desktop/mobile collapsed and expanded states again. Record what was actually viewed, test outcomes, and any remaining unverified browser coverage. Never substitute a test list, health response, or deployment status for visual acceptance.

@@ -154,14 +154,49 @@ test('contact accessibility, source facts and internal targets', async ({ page }
   await expect(publicWriting).toHaveAttribute('rel', /noopener/);
 });
 
-test('the featured thesis and all six award records preserve the published facts', async ({ page }) => {
-  const thesis = page.locator('.featured-card');
-  await expect(thesis).not.toHaveAttribute('open', '');
-  await expect(thesis.locator('.work-kind')).toHaveText('Undergraduate thesis');
-  await expect(thesis.locator('.card-summary em')).toHaveText(
-    'A Study on Subjectivity Formation and Resistant Politics in Chinese Society: Focusing on the Fengxian Incident.',
-  );
-  await expect(thesis.locator('.card-summary em')).toBeVisible();
+for (const width of [390, 320]) {
+  test(`the academic section has a compact, consistent summary at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    const academic = page.locator('.academic-card');
+    await expect(page.locator('.profile-card').first()).toHaveClass(/academic-card/);
+    await expect(academic).not.toHaveAttribute('open', '');
+    await expect(academic.locator('.card-title')).toHaveText('Selected Academic Work');
+    await expect(academic.locator('.card-summary')).toHaveText('Thesis, research projects, and seminars.');
+    await expect(academic.locator('.thesis-title')).toBeHidden();
+
+    const titleStyles = await page.locator('.profile-card .card-title').evaluateAll(titles => titles.map(title => {
+      const style = getComputedStyle(title);
+      return [style.fontFamily, style.fontSize, style.fontWeight, style.textTransform, style.letterSpacing];
+    }));
+    for (const style of titleStyles.slice(1)) expect(titleStyles[0]).toEqual(style);
+    expect(await academic.locator('summary').evaluate(summary => summary.getBoundingClientRect().height)).toBeLessThan(180);
+    expect(await academic.locator('summary').evaluate(summary => summary.scrollWidth <= summary.clientWidth + 1)).toBe(true);
+    await expect(academic.locator('.card-index')).toBeVisible();
+
+    await academic.locator('summary').click();
+    await expectSelectedTitleInView(academic);
+    await expect(academic.locator('.thesis-title')).toHaveText(
+      'A Study on Subjectivity Formation and Resistant Politics in Chinese Society: Focusing on the Fengxian Incident.',
+    );
+    await expect(academic.locator('.thesis-title')).toBeVisible();
+    await expect(academic.locator('.card-details li')).toHaveCount(6);
+  });
+}
+
+test('all six academic and six award records preserve the published facts', async ({ page }) => {
+  const academicRecords = await page.locator('.academic-card .card-details li').evaluateAll(items => items.map(item => [
+    item.querySelector('.entry-year').textContent.trim(),
+    item.querySelector('.entry-text').textContent.trim(),
+  ]));
+  expect(academicRecords).toEqual([
+    ['Undergraduate thesis', 'A Study on Subjectivity Formation and Resistant Politics in Chinese Society: Focusing on the Fengxian Incident.'],
+    ['2022', 'Researcher, Feminist Project, Fudan University.'],
+    ['Feminist reading group', 'Recruitment initiative at the College of Social Sciences, Hanyang University.'],
+    ['2020–2022', 'Writer, editor, and member of Academic Symposium Forêt; contributed to research on war and sexual violence and to a seminar on animal rights.'],
+    ['2023', 'Seminar course on democratization and climate and environmental issues, Asia Democracy Network.'],
+    ['2022', 'Where Is China Going and Why: The Party State and Global Order, The New University in Exile Consortium.'],
+  ]);
 
   const honors = page.locator('.profile-card').filter({
     has: page.getByRole('heading', { name: 'Honors & Awards', exact: true }),
