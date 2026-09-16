@@ -23,7 +23,16 @@ async function expectUnclippedText(locator) {
   })).toBe(true);
 }
 
-for (const width of [1440, 1280, 390, 320]) {
+async function expectSelectedTitleInView(card) {
+  await expect(card).toHaveAttribute('open', '');
+  await expect.poll(async () => card.locator('.card-title').evaluate(element => {
+    const title = element.getBoundingClientRect();
+    const navigation = document.querySelector('.topbar').getBoundingClientRect();
+    return title.top >= navigation.bottom - 1 && title.bottom <= window.innerHeight + 1;
+  }), { message: 'The expanded title should remain visible below the sticky navigation' }).toBe(true);
+}
+
+for (const width of [1440, 1280, 881, 880, 681, 390, 320]) {
   test(`layout and all seven disclosures at ${width}px`, async ({ page }, testInfo) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -42,36 +51,64 @@ for (const width of [1440, 1280, 390, 320]) {
       expect(await card.locator('.card-details li').evaluateAll(items => items.length > 0 && items.every(el => el.checkVisibility()))).toBe(true);
       await expect(card.locator('.card-details')).toHaveCSS('opacity', '1');
       expect(await card.evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
+      if (width <= 390) await expectSelectedTitleInView(card);
     }
     await page.screenshot({ path: testInfo.outputPath(`profile-${width}.png`), fullPage: true });
   });
 }
 
-test('fade animations settle and reverse without a stale closing timer', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'no-preference' });
-  const cards = page.locator('.profile-card');
-  for (let i = 0; i < 7; i++) {
-    const card = cards.nth(i);
-    await card.locator('summary').click();
+for (const width of [1280, 390, 320]) {
+  test(`fade animations settle and reverse without a stale closing timer at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    const cards = page.locator('.profile-card');
+    for (let i = 0; i < 7; i++) {
+      const card = cards.nth(i);
+      await card.locator('summary').click();
+      await expect(page.locator('.profile-card[open]')).toHaveCount(1);
+      await expect(card.locator('.card-details')).toHaveCSS('opacity', '1');
+      await expect(card).not.toHaveClass(/is-opening|is-closing/);
+      await expectSelectedTitleInView(card);
+    }
+    const sixth = cards.nth(5);
+    await sixth.locator('summary').click();
+    await expect(sixth.locator('.card-details')).toHaveCSS('opacity', '1');
+    await sixth.locator('summary').click();
+    await expect(sixth).toHaveClass(/is-closing/);
+    // dispatchEvent deliberately avoids waiting for animated geometry to settle.
+    await sixth.locator('summary').dispatchEvent('click');
+    await expect(sixth).not.toHaveClass(/is-closing/);
+    await expect(sixth.locator('.card-details')).toHaveCSS('opacity', '1');
+    await page.waitForTimeout(550); // exceed the 480ms timer that must have been cancelled
+    await expect(sixth).toHaveAttribute('open', '');
+    await cards.nth(6).locator('summary').click();
     await expect(page.locator('.profile-card[open]')).toHaveCount(1);
-    await expect(card.locator('.card-details')).toHaveCSS('opacity', '1');
-    await expect(card).not.toHaveClass(/is-opening|is-closing/);
-  }
-  const sixth = cards.nth(5);
-  await sixth.locator('summary').click();
-  await expect(sixth.locator('.card-details')).toHaveCSS('opacity', '1');
-  await sixth.locator('summary').click();
-  await expect(sixth).toHaveClass(/is-closing/);
-  // dispatchEvent deliberately avoids waiting for animated geometry to settle.
-  await sixth.locator('summary').dispatchEvent('click');
-  await expect(sixth).not.toHaveClass(/is-closing/);
-  await expect(sixth.locator('.card-details')).toHaveCSS('opacity', '1');
-  await page.waitForTimeout(550); // exceed the 480ms timer that must have been cancelled
-  await expect(sixth).toHaveAttribute('open', '');
-  await cards.nth(6).locator('summary').click();
-  await expect(page.locator('.profile-card[open]')).toHaveCount(1);
-  await expect(cards.nth(6)).toHaveAttribute('open', '');
-});
+    await expect(cards.nth(6)).toHaveAttribute('open', '');
+  });
+}
+
+for (const width of [1280, 390]) {
+  test(`switching from long experience keeps the selected title in view at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    const experience = page.locator('.experience-card');
+    const skills = page.locator('.skills-card');
+    const honors = page.locator('.profile-card').filter({
+      has: page.getByRole('heading', { name: 'Honors & Awards', exact: true }),
+    });
+
+    for (const target of [skills, honors, skills, honors]) {
+      await experience.locator('summary').click();
+      await expect(experience).toHaveAttribute('open', '');
+      await target.locator('summary').click();
+      await expect(page.locator('.profile-card[open]')).toHaveCount(1);
+      await expect(target).toHaveAttribute('open', '');
+      // Closing the long preceding section must not leave the selected heading
+      // above the viewport or behind the sticky navigation.
+      await expectSelectedTitleInView(target);
+    }
+  });
+}
 
 test('keyboard skip link, disclosure controls and navigation', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -108,11 +145,41 @@ test('contact accessibility, source facts and internal targets', async ({ page }
   await expect(page.locator('.lead-fields li')).toHaveText([
     'Qualitative sociological research', 'Sociology of ideology', 'Social change', 'Gender studies',
   ]);
+  await expect(page.locator('.name-line [lang="zh-Hans"]')).toHaveText('王官鑫');
+  await expect(page.locator('.name-line [lang="ko"]')).toHaveText('왕관흠');
   expect(await page.locator('[id]').evaluateAll(els => new Set(els.map(el => el.id)).size === els.length)).toBe(true);
   expect(await page.locator('a[href^="#"]').evaluateAll(els => els.every(el => document.getElementById(el.hash.slice(1))))).toBe(true);
   const publicWriting = page.locator('.contact-links a').last();
   await expect(publicWriting).toHaveAttribute('href', 'https://matters.town/@PicaPica');
   await expect(publicWriting).toHaveAttribute('rel', /noopener/);
+});
+
+test('the featured thesis and all six award records preserve the published facts', async ({ page }) => {
+  const thesis = page.locator('.featured-card');
+  await expect(thesis).not.toHaveAttribute('open', '');
+  await expect(thesis.locator('.work-kind')).toHaveText('Undergraduate thesis');
+  await expect(thesis.locator('.card-summary em')).toHaveText(
+    'A Study on Subjectivity Formation and Resistant Politics in Chinese Society: Focusing on the Fengxian Incident.',
+  );
+  await expect(thesis.locator('.card-summary em')).toBeVisible();
+
+  const honors = page.locator('.profile-card').filter({
+    has: page.getByRole('heading', { name: 'Honors & Awards', exact: true }),
+  });
+  const records = await honors.locator('.card-details li').evaluateAll(items => items.map(item => [
+    item.querySelector('.entry-year').textContent.trim(),
+    item.querySelector('.entry-text').textContent.trim(),
+  ]));
+  // This baseline deliberately keeps institution names, dates, percentages and
+  // every GPA explicit: a layout refinement must not shorten the CV facts.
+  expect(records).toEqual([
+    ['2023–2025', 'Hanyang International Scholarship (HISP, 100%), Hanyang University.'],
+    ['2022', 'Magna Cum Laude, Chung-Ang University.'],
+    ['2021 & 2022', 'Academic Excellence Award (100% scholarship), Chung-Ang University — GPA 4.33/4.5 and 4.31/4.5.'],
+    ['2021', 'Academic Excellence Award (75% scholarship), Chung-Ang University — GPA 3.91/4.5.'],
+    ['2020', 'Academic Excellence Award (50% scholarship), Chung-Ang University — GPA 4.08/4.5.'],
+    ['2019 & 2020', 'Academic Excellence Award (100% scholarship), Myongji University — GPA 4.0/4.3 and 4.2/4.3.'],
+  ]);
 });
 
 test('printing shows every closed disclosure and preserves the reading state', async ({ page }, testInfo) => {
@@ -170,6 +237,9 @@ test('public assets and discovery metadata are available in the served build', a
   }
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://ghwsocio.social/');
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://ghwsocio.social/assets/social-card.png');
+  expect(await page.locator('meta[name="theme-color"]').getAttribute('content')).toBe(
+    (await page.locator('body').evaluate(element => getComputedStyle(element).getPropertyValue('--bg'))).trim(),
+  );
   const person = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
   expect(person['@type']).toBe('Person');
   expect(person.name).toBe(await page.locator('h1').textContent());
