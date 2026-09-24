@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { publicFiles } from './public-files.mjs';
 
 const root = new URL(process.argv.includes('--dist') ? '../dist/' : '../', import.meta.url);
-const mime = { html: 'text/html; charset=utf-8', txt: 'text/plain; charset=utf-8', xml: 'application/xml', svg: 'image/svg+xml', png: 'image/png' };
+const mime = { html: 'text/html; charset=utf-8', txt: 'text/plain; charset=utf-8', xml: 'application/xml', svg: 'image/svg+xml', png: 'image/png', woff2: 'font/woff2' };
 const port = Number(process.env.PORT || 4173);
 
 createServer(async (request, response) => {

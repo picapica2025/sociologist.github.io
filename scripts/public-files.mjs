@@ -6,4 +6,6 @@ export const publicFiles = [
   'sitemap.xml',
   'assets/favicon.svg',
   'assets/social-card.png',
+  'assets/fonts/eb-garamond-latin.woff2',
+  'assets/fonts/OFL.txt',
 ];

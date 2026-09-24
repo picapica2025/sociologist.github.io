@@ -1,5 +1,11 @@
 import { defineConfig } from '@playwright/test';
 
+const testPort = Number.parseInt(process.env.SITE_TEST_PORT || '4173', 10);
+if (!Number.isInteger(testPort) || testPort < 1 || testPort > 65_535) {
+  throw new Error(`Invalid SITE_TEST_PORT: ${process.env.SITE_TEST_PORT}`);
+}
+const testOrigin = `http://127.0.0.1:${testPort}`;
+
 export default defineConfig({
   testDir: './tests',
   timeout: 30_000,
@@ -10,7 +16,7 @@ export default defineConfig({
   retries: 0,
   reporter: [['list'], ['html', { open: 'never' }], ['json', { outputFile: 'test-results/results.json' }]],
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: testOrigin,
     browserName: 'chromium',
     channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
     trace: 'retain-on-failure',
@@ -18,7 +24,8 @@ export default defineConfig({
   },
   webServer: {
     command: `node scripts/serve.mjs${process.env.SITE_TEST_DIST ? ' --dist' : ''}`,
-    url: 'http://127.0.0.1:4173',
+    url: testOrigin,
+    env: { ...process.env, PORT: String(testPort) },
     reuseExistingServer: false,
   },
 });
