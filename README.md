@@ -51,11 +51,11 @@ Windows 已安装 Edge 或 Chrome 时，可先设 `$env:PLAYWRIGHT_CHANNEL = 'ms
 
 ## 发布流程
 
-### 当前实际状态（2026-09-14）
+### 当前实际状态（2026-09-25）
 
-新版已通过远端 11 项浏览器测试（Actions run `34811302597`），发布提交为 `a62a6d4`。当前仍使用原有分支式 Pages 发布；`main` **只保存六个公开文件**。完整维护源码位于远端 `upgrade/editorial-20260914`，本地跟踪分支为 `source/editorial-20260914`。旧维护分支保留，不要将完整源码 PR 合并到 `main`。
+最新公开发布提交为 `baed596`。`main` 仅保存八个公开文件，仍通过原有分支式 Pages 发布。完整维护源码位于远端 `upgrade/editorial-20260914`，本地跟踪分支为 `source/editorial-20260914`；不要将完整维护源码合并到 `main`。
 
-当前发布顺序：在源码分支验收 → 仅从 `scripts/public-files.mjs` 提取公开文件生成发布提交 → 非强制更新 `main` → 等待 Pages 成功 → 比对线上字节及两个域名入口。源码验证 PR #1 为草稿，不是待合并的生产发布 PR。若常规 Git 推送受宿主限制，可使用 Git data API 镜像已提交的本地文件树；必须随后 fetch 并验证公开文件差异为空，不能使用 Contents API 绕过历史。
+本次发布从 `scripts/public-files.mjs` 生成八个公开文件，再以非强制推送更新 `main`。上线核对确认正式域名首页与 `baed596:index.html` 字节一致，GitHub Pages 备用地址跳转到正式域名，字体和授权文件均可读取。后续发布仍需先验收源码，再用公开文件清单生成发布提交、等待 Pages 完成，并检查两个域名入口。
 
 下列手动 Actions 部署方案尚未启用；只有完成 Pages 设置迁移后才能按此运行。
 
