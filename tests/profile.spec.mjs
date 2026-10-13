@@ -27,9 +27,12 @@ async function expectSelectedTitleInView(card) {
   await expect(card).toHaveAttribute('open', '');
   await expect.poll(async () => card.locator('.card-title').evaluate(element => {
     const title = element.getBoundingClientRect();
-    const navigation = document.querySelector('.topbar').getBoundingClientRect();
-    return title.top >= navigation.bottom - 1 && title.bottom <= window.innerHeight + 1;
-  }), { message: 'The expanded title should remain visible below the sticky navigation' }).toBe(true);
+    const navigationElement = document.querySelector('.topbar');
+    const navigation = navigationElement.getBoundingClientRect();
+    const verticalRail = getComputedStyle(navigationElement).position === 'fixed';
+    const clearsNavigation = verticalRail ? title.left >= navigation.right - 1 : title.top >= navigation.bottom - 1;
+    return clearsNavigation && title.top >= -1 && title.bottom <= window.innerHeight + 1;
+  }), { message: 'The expanded title should remain visible beside or below navigation' }).toBe(true);
 }
 
 for (const width of [1440, 1280, 881, 880, 681, 390, 320]) {
@@ -109,6 +112,13 @@ for (const width of [1280, 390]) {
     }
   });
 }
+
+test('navigation stays on About when the whole page fits without scrolling', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 1800 });
+  await page.reload();
+  expect(await page.evaluate(() => scrollY === 0 && document.documentElement.scrollHeight <= innerHeight)).toBe(true);
+  await expect(page.locator('nav a[href="#about"]')).toHaveAttribute('aria-current', 'location');
+});
 
 test('keyboard skip link, disclosure controls and navigation', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });

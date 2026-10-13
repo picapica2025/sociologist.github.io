@@ -10,6 +10,7 @@
     "test": "playwright test",
     "check": "npm run check:html && npm test",
     "build": "node scripts/build.mjs",
+    "audit:visual": "node scripts/visual-audit.mjs",
     "assets": "node scripts/render-share-card.mjs"
   },
   "devDependencies": {

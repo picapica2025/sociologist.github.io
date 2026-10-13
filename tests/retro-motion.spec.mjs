@@ -77,7 +77,8 @@ test('the self-hosted EB Garamond face and its license are served', async ({ pag
   const titleFamilies = await page.locator('h1, .card-title').evaluateAll(elements =>
     elements.map(element => getComputedStyle(element).fontFamily));
   expect(titleFamilies).toHaveLength(8);
-  for (const family of titleFamilies) expect(family).toMatch(/^['"]?EB Garamond['"]?(?:,|$)/);
+  expect(titleFamilies[0]).toMatch(/^['"]?EB Garamond['"]?(?:,|$)/);
+  for (const family of titleFamilies.slice(1)) expect(family).toMatch(/sans-serif$/);
 });
 
 test('a failed webfont request falls back without narrow-screen overflow', async ({ page }) => {

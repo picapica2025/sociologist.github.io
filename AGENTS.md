@@ -5,7 +5,7 @@
 - This is the existing `picapica2025/sociologist.github.io` GitHub Pages site at `https://ghwsocio.social/`.
 - `index.html` owns the visible profile, CSS, and interaction code. This is a static site with no production JavaScript dependencies.
 - Confirm `git status`, `git log -1`, and the remote main baseline before editing. Do not use the GitHub Contents API to bypass the local Git history.
-- The September 2026 upgrade branch is `upgrade/maintenance-20260913`, based on remote main `61abdf1b62ffb8d310950676594a746de7914134`. The older sibling working directory was preserved with its original uncommitted page; do not treat it as the upgraded source.
+- The canonical local maintenance branch is `source/editorial-20260914`, tracking remote `upgrade/editorial-20260914`. The older sibling working directory was preserved with its original uncommitted page; do not treat it as the upgraded source.
 
 ## Content rules
 
@@ -17,10 +17,11 @@
 
 ## Verification and publication
 
-- Current release topology (2026-09-14): remote `upgrade/editorial-20260914` holds full source; local `source/editorial-20260914` tracks it. `main` holds only the six public files and still triggers legacy Pages. Do not merge the full-source draft PR into main. Follow the current-state section of README; manual Actions publishing is not enabled.
+- Current release topology (verified 2026-10-13): remote `upgrade/editorial-20260914` holds full source; local `source/editorial-20260914` tracks it. `main` holds only the eight public files and still triggers legacy Pages. Do not merge the full-source draft PR into main. Follow the current-state section of README; manual Actions publishing is not enabled.
 
 - Use Node 24.8 or later and `npm ci --ignore-scripts`. Dependencies are development-only and locked.
 - Run `npm run check:html`, `npm run build`, and the browser tests against `dist` as described in README.md.
+- Run `npm run audit:visual` after the build to capture all required widths and disclosure states. Inspect the generated gallery; successful capture alone is not visual acceptance. Use `-- --url <public URL>` for the same checks after deployment. Reports stay in ignored `visual-audit/` and never enter the public allowlist.
 - Check actual printed body visibility, not only bounding boxes or `display`. Retain the original disclosure state after print.
 - Preserve the native no-JavaScript fallback, reduced-motion handling, keyboard access, all seven disclosures, and rapid animation reversal.
 - Keep `scripts/public-files.mjs` as the explicit publication allowlist. Do not deploy test reports, source CV files, package files, or the entire repository root.

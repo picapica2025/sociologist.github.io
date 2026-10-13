@@ -6,7 +6,7 @@
 
 本次升级工作副本：`C:\Users\GHSoc\Documents\Codex\2026-07-31\wo\work\sociologist-site-upgrade`。
 
-分支 `upgrade/maintenance-20260913` 从远端 `main` 的 `61abdf1` 建立。相邻的旧 `sociologist-site` 目录保留了原页面及未提交状态，后续编辑请使用本升级副本。两者共用 Git 对象库，不要手工删除或搬移 `.git` 文件。
+本地维护分支为 `source/editorial-20260914`，跟踪远端完整源码分支 `upgrade/editorial-20260914`。相邻的旧 `sociologist-site` 目录保留了原页面及未提交状态，后续编辑请使用本升级副本。两者共用 Git 对象库，不要手工删除或搬移 `.git` 文件。
 
 使用 Node 24.8+；CI 使用 Node 24。首次安装：
 
@@ -31,14 +31,35 @@ Windows 已安装 Edge 或 Chrome 时，可先设 `$env:PLAYWRIGHT_CHANNEL = 'ms
 
 测试报告位于 `playwright-report/index.html` 与 `test-results/results.json`；这些目录已被 Git 忽略。可用 `npx --no-install playwright show-report` 浏览报告。
 
+### 实际界面验收
+
+构建后运行：
+
+```powershell
+$env:PLAYWRIGHT_CHANNEL = 'chrome'
+npm run audit:visual
+```
+
+脚本在独立的本机端口 4190 提供 `dist/`，依次保存 1280、390、320 px 下的整页折叠状态和七栏单独展开状态，共 24 张 PNG，以及离线画廊和 JSON 记录。输出位于 `visual-audit/<timestamp>/index.html`，保留旧记录；可用 `SITE_AUDIT_PORT` 更换端口。脚本结束时关闭自己启动的浏览器与服务。
+
+逐图核对首屏、第一项长学术条目、全部研究/成绩/奖项、换行、留白和对齐。截图使用减少动画模式以保存稳定画面；动画中间帧、快速反向、键盘、打印和无 JS 行为由浏览器测试另行检查。生成截图成功不等于目视通过。
+
+上线后用带本次发布标记的地址绕过旧浏览器缓存，再运行同一套截图：
+
+```powershell
+npm run audit:visual -- --url 'https://ghwsocio.social/?release=<published-commit>'
+```
+
+同时核对干净根地址返回的 HTML 与发布提交中的 Git blob 一致，并验证 GitHub Pages 备用入口跳转。视觉报告不在公开文件清单中。
+
 `npm run build` 将 `scripts/public-files.mjs` 中列出的公开文件复制到 `dist/`。当前公开文件清单为八个文件（原六个文件加字体和授权文本）。构建会拒绝存在额外文件的旧构建目录；遇到该情况应使用干净工作副本，先检查额外文件，不要盲目递归删除。
 
 ### 复古字体与动画（2026-09-25）
 
-- 标题使用自托管 EB Garamond 拉丁字符可变字体，正文保留系统无衬线字体；字体加载失败时回退至系统衬线字体。
+- 姓名使用自托管 EB Garamond 拉丁字符可变字体，栏目标题和正文使用系统无衬线字体；字体加载失败时姓名回退至系统衬线字体。
 - `assets/fonts/eb-garamond-latin.woff2` 来自 Google Fonts 官方 v33，44,336 字节，SHA-256 为 `88603384163d301aebd5bd769832a8bfe3c9004ec24178417b9817f0ad32c63b`。SIL OFL 1.1 原文随 `assets/fonts/OFL.txt` 一起分发；访客加载页面时不向 Google 请求字体。
 - 字体来源：https://fonts.gstatic.com/s/ebgaramond/v33/SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2；授权来源：https://github.com/google/fonts/blob/main/ofl/ebgaramond/OFL.txt。
-- 动画包括一次性首屏进场、栏目展开/收起、正文短间隔淡入、导航下划线和编号标记；不使用无限循环动画。折叠包装层避免列表边框和内边距造成收起残高。减少动态、打印、无 JavaScript 回退仍须通过验收。
+- 动画包括一次性首屏进场、栏目展开/收起、正文短间隔淡入和导航选中反馈；不使用无限循环动画。折叠包装层避免列表边框和内边距造成收起残高。减少动态、打印、无 JavaScript 回退仍须通过验收。
 - 页面文字和履历事实未作修改。发布时须依照八文件公开清单，将字体与授权文本一并纳入；不得上传测试报告或完整维护源码。
 
 ## 内容与分享资源
@@ -51,11 +72,11 @@ Windows 已安装 Edge 或 Chrome 时，可先设 `$env:PLAYWRIGHT_CHANNEL = 'ms
 
 ## 发布流程
 
-### 当前实际状态（2026-09-25）
+### 当前发布拓扑（2026-10-13 核验）
 
-最新公开发布提交为 `baed596`。`main` 仅保存八个公开文件，仍通过原有分支式 Pages 发布。完整维护源码位于远端 `upgrade/editorial-20260914`，本地跟踪分支为 `source/editorial-20260914`；不要将完整维护源码合并到 `main`。
+`main` 仅保存八个公开文件，仍通过原有分支式 Pages 发布。完整维护源码位于远端 `upgrade/editorial-20260914`，本地跟踪分支为 `source/editorial-20260914`；不要将完整维护源码合并到 `main`。每轮维护先用 `git ls-remote origin refs/heads/main refs/heads/upgrade/editorial-20260914` 核验实际远端基线；发布提交和验收结果记录在该轮维护报告中。
 
-本次发布从 `scripts/public-files.mjs` 生成八个公开文件，再以非强制推送更新 `main`。上线核对确认正式域名首页与 `baed596:index.html` 字节一致，GitHub Pages 备用地址跳转到正式域名，字体和授权文件均可读取。后续发布仍需先验收源码，再用公开文件清单生成发布提交、等待 Pages 完成，并检查两个域名入口。
+发布从 `scripts/public-files.mjs` 生成八个公开文件，再以非强制推送更新 `main`。先验收源码，将已验证的完整维护源码保存到源码分支，再在干净发布工作树中只复制这八个文件并生成发布提交。等待 Pages 完成后，核对正式域名首页与该发布提交中的 `index.html` 字节一致、GitHub Pages 备用地址跳转到正式域名，以及字体和授权文件可读取；完成部署后的实际界面验收。
 
 下列手动 Actions 部署方案尚未启用；只有完成 Pages 设置迁移后才能按此运行。
 
