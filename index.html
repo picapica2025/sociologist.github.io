@@ -357,7 +357,7 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
         if (top <= marker) active = section;
       });
 
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
         active = navSections[navSections.length - 1];
       }
 
