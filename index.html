@@ -45,7 +45,7 @@
 :root{color-scheme:light;--bg:#fff;--ink:#242329;--ink-soft:#4f4d56;--muted:#74717b;--line:#e6e5e9;--violet:#6257c8;--violet-deep:#48409b;--lavender-soft:#f1f0fb;--surface:#fff;--surface-soft:#f8f8fa;--rail:252px;--max:1020px;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--serif:"EB Garamond","Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;--ease-out:cubic-bezier(.22,1,.36,1);--ease-flow:cubic-bezier(.4,0,.2,1)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--bg);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-underline-offset:4px}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:var(--serif)}summary{font:inherit}
-:focus-visible{outline:2px solid var(--violet);outline-offset:4px}section,#about{scroll-margin-top:24px}
+:focus-visible{outline:2px solid var(--violet);outline-offset:4px}section,#about,.profile-card{scroll-margin-top:24px}
 .shell{width:min(var(--max),calc(100% - 64px));margin-inline:auto}
 .skip-link{position:fixed;top:10px;left:16px;z-index:200;padding:8px 14px;color:#fff;background:var(--violet-deep);transform:translateY(-160%)}.skip-link:focus{transform:none}
 .topbar{position:fixed;inset:0 auto 0 0;z-index:20}
@@ -84,6 +84,7 @@ h1{margin:0;font-size:clamp(54px,6.4vw,76px);font-weight:500;line-height:1;lette
 .js .profile-card:not([open]) .card-details,.profile-card.is-opening .card-details,.profile-card.is-closing .card-details{--details-bottom:0px;grid-template-rows:0fr;opacity:0;transform:translateY(-8px)}
 .card-details ul{min-height:0;overflow:hidden;display:grid;gap:13px;padding:16px 0 0;margin:0;border-top:1px solid var(--line);list-style:none}
 .card-details li{color:var(--ink-soft);font-size:14px;line-height:1.65}.card-details strong{color:var(--ink);font-weight:600}
+.section-link{display:inline-flex;align-items:center;min-height:40px;margin-top:10px;color:var(--muted);font-size:12px;text-decoration-thickness:1px}.section-link:hover{color:var(--violet-deep)}
 .topic-card .card-summary{display:none}
 .topic-card .card-details ul,.skills-card .card-details ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 36px}
 .topic-card .card-details strong,.skills-card .card-details strong{display:block;margin-bottom:4px}
@@ -110,7 +111,7 @@ footer{padding:0 0 24px;color:var(--muted);font-size:11px}.footer-line{padding-t
 main.shell,#content.shell,footer.shell{width:min(var(--max),calc(100% - 64px));margin-inline:auto}
 .hero{padding:35px 0 28px}.quick-facts{margin-top:23px}
 .contact-panel{flex-direction:column;align-items:flex-start;gap:9px}
-section,#about{scroll-margin-top:76px}
+section,#about,.profile-card{scroll-margin-top:76px}
 }
 @media(max-width:680px){
 .shell{width:calc(100% - 36px)}.nav-shell{min-height:54px;gap:8px;padding-inline:18px}.brand{font-size:12px}nav ul{gap:3px}nav a{min-height:40px;padding:7px 9px;font-size:11px}
@@ -121,18 +122,18 @@ main.shell,#content.shell,footer.shell{width:calc(100% - 36px)}
 .profile-section{padding-top:21px}.section-head{margin-bottom:13px}.section-head h2{font-size:clamp(12px,3.6vw,16px);letter-spacing:-.035em}
 .card-grid{gap:7px}.profile-card summary{grid-template-columns:24px minmax(0,1fr) 25px;gap:9px;padding:14px 12px}.card-title{font-size:15px}.card-summary{font-size:11px}
 .card-index{width:24px;height:24px;font-size:8px}.card-icon{width:25px;height:25px;font-size:17px}
-.card-details{padding-left:46px;padding-right:13px;--details-bottom:18px}.card-details li{font-size:13px}
+.card-details{padding-inline:16px;--details-bottom:18px}.card-details li{font-size:14px}
 .topic-card .card-details ul,.skills-card .card-details ul{grid-template-columns:1fr;gap:14px}
 .timeline-card .card-details li{grid-template-columns:1fr;gap:4px;padding-block:13px}.entry-year,.experience-card .entry-year{font-size:11px}
 .contact-section{padding-top:20px}.contact-panel{padding-top:14px}.contact-panel h2{font-size:clamp(12.5px,3.2vw,14px)}main{padding-bottom:17px}
-section,#about{scroll-margin-top:66px}
+section,#about,.profile-card{scroll-margin-top:66px}
 }
 @media(prefers-reduced-motion:reduce){
 html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js [data-reveal]{opacity:1;translate:none}
 }
 @media print{
 *,*::before,*::after{animation:none!important;transition:none!important}
-body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [data-reveal]{opacity:1!important;translate:none!important;transition:none!important}
+body{background:#fff}.topbar,.skip-link,.card-icon,.section-link{display:none!important}.js [data-reveal]{opacity:1!important;translate:none!important;transition:none!important}
 .shell{width:94%}main.shell,#content.shell,footer.shell{width:94%;margin-inline:auto}.hero{padding:14px 0 20px;gap:16px}h1{font-size:50px}.profile-section{padding-top:20px}.section-head{margin-bottom:14px}.section-head h2{font-size:27px}
 .profile-card{break-inside:avoid}.profile-card::details-content{content-visibility:visible}.profile-card summary{grid-template-columns:20px minmax(0,1fr);padding-block:13px}
 .card-title{font-size:20px}.card-summary{font-size:11px}
@@ -195,7 +196,7 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
       </div>
 
       <div class="card-grid">
-        <details class="profile-card academic-card timeline-card" data-reveal>
+        <details id="academic-work" class="profile-card academic-card timeline-card" data-reveal>
           <summary>
             <span class="card-index" aria-hidden="true">01</span>
             <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Selected Academic Work</span><span class="card-summary">Thesis, research projects, and seminars.</span></span>
@@ -208,10 +209,10 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
             <li><span class="entry-year">2020–2022</span><span class="entry-text">Writer, editor, and member of Academic Symposium Forêt; contributed to research on war and sexual violence and to a seminar on animal rights.</span></li>
             <li><span class="entry-year">2023</span><span class="entry-text">Seminar course on democratization and climate and environmental issues, Asia Democracy Network.</span></li>
             <li><span class="entry-year">2022</span><span class="entry-text"><em>Where Is China Going and Why: The Party State and Global Order</em>, The New University in Exile Consortium.</span></li>
-          </ul></div></div>
+          </ul><a class="section-link" href="#academic-work">Link to this section</a></div></div>
         </details>
 
-        <details class="profile-card topic-card" data-reveal>
+        <details id="research-interests" class="profile-card topic-card" data-reveal>
           <summary>
             <span class="card-index" aria-hidden="true">02</span>
             <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Research Interests</span><span class="card-summary">Qualitative sociological research, sociology of ideology, social change, and gender studies.</span></span>
@@ -222,10 +223,10 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
             <li><strong>Sociology of ideology.</strong> The formation, circulation, reproduction, and contestation of ideologies in social life.</li>
             <li><strong>Social change.</strong> Transformations in institutions, social relations, and everyday life.</li>
             <li><strong>Gender studies.</strong> Gender relations, institutions, and inequalities from a sociological perspective.</li>
-          </ul></div></div>
+          </ul><a class="section-link" href="#research-interests">Link to this section</a></div></div>
         </details>
 
-        <details class="profile-card" data-reveal>
+        <details id="public-writing" class="profile-card" data-reveal>
           <summary>
             <span class="card-index" aria-hidden="true">03</span>
             <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Public Writing</span><span class="card-summary">Public essays, interviews, and editorial work informed by sociological inquiry.</span></span>
@@ -235,10 +236,10 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
             <li><strong>Matters.</strong> Essays and notes on social issues and sociological questions.</li>
             <li><strong>Interview series.</strong> <em>Dialogue with Chinese Workers: Work, the Future, the State, and Us.</em></li>
             <li><strong>Editorial practice.</strong> Writing, editing, and proofreading for academic and civic organizations.</li>
-          </ul></div></div>
+          </ul><a class="section-link" href="#public-writing">Link to this section</a></div></div>
         </details>
 
-        <details class="profile-card timeline-card" data-reveal>
+        <details id="education" class="profile-card timeline-card" data-reveal>
           <summary>
             <span class="card-index" aria-hidden="true">04</span>
             <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Education</span><span class="card-summary">Graduate study in sociology, a B.A. in Sociology, prior study in digital media, and international exchange programs.</span></span>
@@ -250,10 +251,10 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
             <li><span class="entry-year">2018–2020</span><span class="entry-text">Studies in Digital Media, Myongji University.</span></li>
             <li><span class="entry-year">2021</span><span class="entry-text">Summer Exchange in Advanced Data Analysis, University of Wisconsin–Madison.</span></li>
             <li><span class="entry-year">2021</span><span class="entry-text">Winter Exchange in Education and Cultural Promotion, York St John University.</span></li>
-          </ul></div></div>
+          </ul><a class="section-link" href="#education">Link to this section</a></div></div>
         </details>
 
-        <details class="profile-card experience-card timeline-card" data-reveal>
+        <details id="experience" class="profile-card experience-card timeline-card" data-reveal>
           <summary>
             <span class="card-index" aria-hidden="true">05</span>
             <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Selected Experience</span><span class="card-summary">Academic service, civic and cultural volunteering, editorial work, translation, and support for migrant women.</span></span>
@@ -272,10 +273,10 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
             <li><span class="entry-year">Editorial and civic work</span><span class="entry-text">Editorial organizer, project assistant, and campaigner, Zhitong Public Welfare Service Center.</span></li>
             <li><span class="entry-year">Academic editing</span><span class="entry-text">Writer, editorial adviser, and academic proofreader, Zhihe Society of Fudan University.</span></li>
             <li><span class="entry-year">2020–2022</span><span class="entry-text">Korean–Chinese–English Translator and Interpreter, Chung-Ang University Human Rights Office.</span></li>
-          </ul></div></div>
+          </ul><a class="section-link" href="#experience">Link to this section</a></div></div>
         </details>
 
-        <details class="profile-card skills-card" data-reveal>
+        <details id="skills" class="profile-card skills-card" data-reveal>
           <summary>
             <span class="card-index" aria-hidden="true">06</span>
             <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Skills</span><span class="card-summary">Research support, academic information retrieval, data and office tools, writing and editing, and digital media.</span></span>
@@ -286,10 +287,10 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
             <li><strong>Data and office tools.</strong> SPSS, Excel, Hancom Hangul (HWP), Microsoft Word, and PowerPoint.</li>
             <li><strong>Writing and communication.</strong> Academic editing, public writing, collaborative work, and professional communication.</li>
             <li><strong>Digital media.</strong> Adobe Premiere Pro and Photoshop.</li>
-          </ul></div></div>
+          </ul><a class="section-link" href="#skills">Link to this section</a></div></div>
         </details>
 
-        <details class="profile-card timeline-card" data-reveal>
+        <details id="honors" class="profile-card timeline-card" data-reveal>
           <summary>
             <span class="card-index" aria-hidden="true">07</span>
             <span class="card-copy"><span class="card-title" role="heading" aria-level="3">Honors &amp; Awards</span><span class="card-summary">Full and partial merit-based scholarships, including the Hanyang International Scholarship, and magna cum laude honors.</span></span>
@@ -302,7 +303,7 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
             <li><span class="entry-year">2021</span><span class="entry-text">Academic Excellence Award (75% scholarship), Chung-Ang University — GPA 3.91/4.5.</span></li>
             <li><span class="entry-year">2020</span><span class="entry-text">Academic Excellence Award (50% scholarship), Chung-Ang University — GPA 4.08/4.5.</span></li>
             <li><span class="entry-year">2019 &amp; 2020</span><span class="entry-text">Academic Excellence Award (100% scholarship), Myongji University — GPA 4.0/4.3 and 4.2/4.3.</span></li>
-          </ul></div></div>
+          </ul><a class="section-link" href="#honors">Link to this section</a></div></div>
         </details>
       </div>
     </section>
@@ -484,6 +485,8 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
     }
 
     cards.forEach((card) => {
+      // Native toggles also cover a completed animated close and browser search.
+      card.addEventListener('toggle', queueActiveNavUpdate);
       const summary = card.querySelector('summary');
       summary.addEventListener('click', (event) => {
         event.preventDefault();
@@ -495,6 +498,16 @@ body{background:#fff}.topbar,.skip-link,.card-icon{display:none!important}.js [d
         }
       });
     });
+
+    function openLinkedSection() {
+      const card = cards.find((item) => `#${item.id}` === window.location.hash);
+      if (!card) return;
+      if (!card.open || card.classList.contains('is-closing')) openCard(card);
+      card.classList.add('visible');
+      card.scrollIntoView({ block: 'start', behavior: 'instant' });
+    }
+    window.addEventListener('hashchange', openLinkedSection);
+    openLinkedSection();
 
     // Older browsers may not support ::details-content; preserve the reading state
     // while exposing every CV entry to the print renderer.

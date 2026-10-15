@@ -64,6 +64,8 @@ npm run audit:visual -- --url 'https://ghwsocio.social/?release=<published-commi
 
 ## 内容与分享资源
 
+- 七个展开栏目的底部提供 `Link to this section`：可复制该链接，直接分享学术工作、研究兴趣、公共写作、教育、经历、技能或奖项。启用 JavaScript 时，直接访问片段地址及浏览器前进/后退会展开对应栏目；原有 `#about`、`#profile`、`#contact` 保持有效。栏目链接不出现在打印输出中。
+- 手机展开正文使用 14px 字号和对称的 16px 内边距，保留完整履历内容；折叠摘要、顶部和联系区保持紧凑。
 - `index.html`：页面、样式、动画、Person 结构化数据和分享元数据。
 - `assets/favicon.svg`：无姓名缩写的书页图标。
 - `assets/social-card.svg`：可编辑的分享图源文件；`npm run assets` 将其渲染为 1200 × 630 PNG。修改姓名、机构或研究兴趣时需同步 SVG 并重新生成 PNG。
