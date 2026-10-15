@@ -90,12 +90,17 @@ try {
 
     async function capture(state, title) {
       await page.evaluate(async () => {
+        // Let the disclosure's queued reading-position adjustment finish first.
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
         window.scrollTo({ top: 0, behavior: 'instant' });
         await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
       });
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
       const filename = `${width}-${state}.png`;
       await page.screenshot({ path: join(output, filename), fullPage: true, animations: 'disabled' });
-      shots.push({ viewport, state, title, filename, url: page.url() });
+      const scrollY = await page.evaluate(() => window.scrollY);
+      expect(scrollY, 'A full-page capture must stay at the top').toBe(0);
+      shots.push({ viewport, state, title, filename, url: page.url(), scrollY });
       console.log(`Captured ${filename}`);
     }
 
