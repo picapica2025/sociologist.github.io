@@ -78,7 +78,7 @@ npm run audit:visual -- --url 'https://ghwsocio.social/?release=<published-commi
 
 `main` 仅保存八个公开文件，仍通过原有分支式 Pages 发布。完整维护源码位于远端 `upgrade/editorial-20260914`，本地跟踪分支为 `source/editorial-20260914`；不要将完整维护源码合并到 `main`。每轮维护先用 `git ls-remote origin refs/heads/main refs/heads/upgrade/editorial-20260914` 核验实际远端基线；发布提交和验收结果记录在该轮维护报告中。
 
-最新记录：[2026-10-15 阅读与导航升级](docs/releases/2026-10-15.md)。此前记录：[2026-10-13 维护与发布验收](docs/releases/2026-10-13.md)。
+最新记录：[2026-10-25 修复与维护](docs/releases/2026-10-25.md)。此前记录：[2026-10-15 阅读与导航升级](docs/releases/2026-10-15.md)、[2026-10-13 维护与发布验收](docs/releases/2026-10-13.md)。
 
 发布从 `scripts/public-files.mjs` 生成八个公开文件，再以非强制推送更新 `main`。先验收源码，将已验证的完整维护源码保存到源码分支，再在干净发布工作树中只复制这八个文件并生成发布提交。等待 Pages 完成后，核对正式域名首页与该发布提交中的 `index.html` 字节一致、GitHub Pages 备用地址跳转到正式域名，以及字体和授权文件可读取；完成部署后的实际界面验收。
 
