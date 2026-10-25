@@ -1,0 +1,6 @@
+node_modules/
+test-results/
+playwright-report/
+visual-audit/
+dist/
+.npm-cache/
