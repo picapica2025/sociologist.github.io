@@ -109,6 +109,31 @@ test('the existing Profile fragment still lands on its visible heading', async (
   })).toBe(true);
 });
 
+for (const width of [1280, 390]) {
+  test(`rapid history return keeps About in view at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.goto('/#about');
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator('nav a[href="#about"]')).toHaveAttribute('aria-current', 'location');
+
+    await page.evaluate(() => { location.hash = 'honors'; });
+    await expect(page.locator('#honors')).toHaveAttribute('open', '');
+    await page.waitForTimeout(100); // Return while the 500ms reading adjustment is still pending.
+    await page.goBack();
+    await expect(page).toHaveURL(/#about$/);
+    await page.waitForTimeout(700); // An immediate assertion would miss the stale callback.
+
+    await expect(page.locator('nav a[href="#about"]')).toHaveAttribute('aria-current', 'location');
+    expect(await page.locator('#about').evaluate(about => {
+      const box = about.getBoundingClientRect();
+      const nav = document.querySelector('.topbar').getBoundingClientRect();
+      const safeTop = nav.width < innerWidth * .5 ? 0 : nav.bottom;
+      return box.top >= safeTop - 1 && box.top < innerHeight / 2;
+    })).toBe(true);
+  });
+}
+
 for (const fragment of ['missing-section', '%E0%A4%A']) {
   test(`the fragment ${fragment} leaves disclosure and navigation controls usable`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });

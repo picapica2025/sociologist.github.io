@@ -500,6 +500,7 @@ body{background:#fff}.topbar,.skip-link,.card-icon,.section-link{display:none!im
     });
 
     function openLinkedSection() {
+      cancelReadingAdjustment();
       const card = cards.find((item) => `#${item.id}` === window.location.hash);
       if (!card) return;
       if (!card.open || card.classList.contains('is-closing')) openCard(card);
